@@ -13,7 +13,7 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link as={Link} to="/">
+              {/* <Nav.Link as={Link} to="/">
                 Example
               </Nav.Link>
               <Nav.Link as={Link} to="/">
@@ -24,25 +24,19 @@ export default function NavBar() {
               </Nav.Link>
               <Nav.Link as={Link} to="/">
                 Example
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
             <Nav>
               {/* Below is the conditional for if a user is signed in or not
               Button will change from Sign in to Username  */}
-            {/* {user ? ( */}
-                <Nav.Link
-              as={Link} to="/"
-              >
-               <Button variant="outline-dark">
-                  UserName
-                </Button>
-             </Nav.Link> 
+              {/* {user ? ( */}
+              {/* <Nav.Link as={Link} to="/">
+                <Button variant="outline-dark">UserName</Button>
+              </Nav.Link> */}
               {/* ) : (  */}
-              <Button variant="warning">
-                Sign In
-              </Button>
-             {/* )}  */}
-          </Nav>
+              <Button variant="warning">Sign In</Button>
+              {/* )}  */}
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
