@@ -1,14 +1,17 @@
-import { Row, Form, Button } from "react-bootstrap";
+import { Row, Form, Button, } from "react-bootstrap";
+import logo from "../Assets/logo.png";
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-};
 
 
 export default function Home() {
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  
   return (
     <>
-     <h2>Put in Your Ingredients!</h2>
+     <h2 className=" mt-5">Put in Your Ingredients!</h2>
       <Form onSubmit={handleSubmit}>
         <div className="row">
           <main
@@ -16,7 +19,7 @@ export default function Home() {
             style={{ maxWidth: "300px" }}
           >
             <div className="content mx-auto">
-              <Row className="g-6">
+              <Row>
                 <Form.Label>Ingredient 1</Form.Label>
                 <Form.Control
                   className="mb-3"

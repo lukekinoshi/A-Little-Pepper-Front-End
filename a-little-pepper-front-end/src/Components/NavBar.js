@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import logo from "../Assets/logo.png";
+import { UserAuth } from "../Context/AuthContext";
 
 export default function NavBar() {
+  const { user } = UserAuth();
+
   return (
     <div>
       <Navbar expand="lg" bg="light" variant="light">
@@ -29,13 +32,15 @@ export default function NavBar() {
             <Nav>
               {/* Below is the conditional for if a user is signed in or not
               Button will change from Sign in to Username  */}
-              {/* {user ? ( */}
-              {/* <Nav.Link as={Link} to="/">
-                <Button variant="outline-dark">UserName</Button>
-              </Nav.Link> */}
-              {/* ) : (  */}
-              <Button variant="warning">Sign In</Button>
-              {/* )}  */}
+              {user ? (
+                <Nav.Link as={Link} to="/profile">
+                  <Button variant="outline-dark">Profile</Button>
+                </Nav.Link>
+              ) : (
+                <Nav.Link as={Link} to="/signin">
+                  <Button variant="outline-dark">Sign In</Button>
+                </Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
