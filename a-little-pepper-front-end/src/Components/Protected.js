@@ -5,7 +5,7 @@ function Protected({ children }) {
   const { user } = UserAuth();
 
   if (!user) {
-    return <div>Protected</div>;
+    return <Navigate to="/" />;
   }
 
   return children;

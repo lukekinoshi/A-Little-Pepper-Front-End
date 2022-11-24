@@ -1,7 +1,4 @@
 import { Row, Form, Button, } from "react-bootstrap";
-import logo from "../Assets/logo.png";
-
-
 
 export default function Home() {
 

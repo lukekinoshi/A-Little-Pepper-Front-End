@@ -19,7 +19,7 @@ export default function Signin() {
     if (user != null) {
       navigate(`/profile`);
     }
-  }, [user]);
+  },[user]);
 
   return (
     <div className="text-center">
