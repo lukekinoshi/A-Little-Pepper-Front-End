@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./Context/AuthContext";
 import NavBar from "./Components/NavBar";
-import Home from "./Pages/Home";
+import Home from "./Components/Homepage";
 import Index from "./Pages/Index";
 import Profile from "./Pages/Profile";
 import Show from "./Pages/Show";
