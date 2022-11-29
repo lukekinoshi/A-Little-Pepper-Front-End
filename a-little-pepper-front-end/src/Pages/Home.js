@@ -1,14 +1,9 @@
-
+import Homepage from "../Components/Homepage"
 
 export default function Home() {
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-  
   return (
-    <>
-    
-    </>
+    <div></div>
   )
 }
+
+
