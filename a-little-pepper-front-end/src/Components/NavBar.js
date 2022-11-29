@@ -28,6 +28,12 @@ export default function NavBar() {
               <Nav.Link as={Link} to="/">
                 Example
               </Nav.Link> */}
+               <Nav.Link as={Link} to={"/"}>
+                Calorie Tracker
+              </Nav.Link>
+              <Nav.Link as={Link} to={"/"}>
+                Saved Recipes
+              </Nav.Link>
             </Nav>
             <Nav>
               {/* Below is the conditional for if a user is signed in or not
