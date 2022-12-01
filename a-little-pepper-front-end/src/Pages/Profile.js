@@ -42,13 +42,14 @@ export default function Profile() {
             // style={{ width: "300px" ,borderRadius: "50%"}}
           />
           <Card.Body>
-            {/* <Card.Title>{profile.name}</Card.Title> */}
+            {/* <h1>lol</h1> */}
+            <Card.Title>{profile.name}</Card.Title>
             <Card.Title>Profile</Card.Title>
             <Card.Subtitle className="mb = ">{user.displayName}</Card.Subtitle>
-            <Card.Text>profile.cal</Card.Text>
-            <Card.Text>profile.fat</Card.Text>
-            <Card.Text>profile.carb</Card.Text>
-            <Card.Text>profile.protein</Card.Text>
+            <Card.Text>{profile.cal}</Card.Text>
+            <Card.Text>{profile.fat}</Card.Text>
+            <Card.Text>{profile.carb}</Card.Text>
+            <Card.Text>{profile.protein}</Card.Text>
           </Card.Body>
 
           <Card.Body>
