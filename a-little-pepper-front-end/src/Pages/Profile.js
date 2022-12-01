@@ -61,16 +61,11 @@ export default function Profile() {
           className="d-flex align-items-center justify-content-center"
           style={{ gap: ".5rem" }}
         >
-          <Button variant="outline-light">Edit Profile</Button>
           <Button variant="outline-dark" onClick={handleSignOut}>
             Sign Out
           </Button>
         </div>
       </div>
-
-      <Button onClick={editProfile} className="mt-5" variant="warning">
-        Edit Profile
-      </Button>
 
       <article>
         <CalorieTracker/>
