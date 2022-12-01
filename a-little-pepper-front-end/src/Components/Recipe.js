@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Card } from "react-bootstrap";
+import { Col, Card } from "react-bootstrap"
 
 export default function RecipeList({ recipe }) {
 
@@ -10,7 +10,7 @@ export default function RecipeList({ recipe }) {
         <Card bg="light" variant="light" style={{ alignItems: "center" }}>
           <Card.Img className="py-3" variant="top" src={recipe.image} style={{ width: "250px", borderRadius: "50%" }} />
           <Card.Body>
-            <Card.Title><Card.Link href='/profile'
+            <Card.Title><Card.Link href={`/recipe/${recipe.id}`}
               style={{ color: "green" }}>{recipe.title}</Card.Link></Card.Title>
           </Card.Body>
         </Card>

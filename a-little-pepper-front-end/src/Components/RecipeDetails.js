@@ -1,30 +1,26 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
-import axios from "axios"
+// import { useEffect, useState } from "react"
+// import axios from "axios"
 
-const API = process.env.REACT_APP_API_URL;
+// const API = process.env.REACT_APP_API_URL;
 
 
 export default function RecipeDetails() {
-  const [recipes, setRecipes] = useState({});
+  // const [recipes, setRecipes] = useState({});
   let { id } = useParams();
-  const navigate = useNavigate();
-  useEffect(
-    () => {
-      axios
-        .get(`${API}/recipes/${id}`)
-        .then((response) => setRecipes(response.data.payload))
-        .catch((error) => navigate('/recipes'))
-    });
-  const handleDelete = () => {
-    axios
-      .delete(`${API}/recipes/${id}`)
-      .then((response) => navigate(`/recipes`))
-      .catch((error) => console.error(error))
-  }
+  // const navigate = useNavigate();
+
+  // useEffect(
+  //   () => {
+  //     axios
+  //       .get(`${API}/recipe/${id}`)
+  //       .then((response) => setRecipes(response.data.payload))
+  //       .catch((error) => navigate('/recipes'))
+  //   });
+  
   return (
     <article className='RecipeDetails'>
-      <div>
+      {/* <div>
         <h1>{recipes.name}</h1>
       </div>
       <h3>{recipes.cal} calories</h3>
@@ -39,15 +35,8 @@ export default function RecipeDetails() {
             <button className="backButton">Back</button>
           </a>
         </div>
-        <div>
-          <a href={`/recipes/${id}/edit`}>
-            <button className="editButton">Edit</button>
-          </a>
-        </div>
-        <span>
-          <button className="deleteButton" onClick={handleDelete}>Delete</button>
-        </span>
-      </div>
+      </div> */}
+      <h1>{id}</h1>
     </article>
   )
 }
