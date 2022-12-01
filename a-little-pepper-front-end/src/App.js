@@ -9,6 +9,7 @@ import Show from "./Pages/Show";
 import NewProfile from "./Pages/Profile";
 import UpdateProfile from "./Pages/UpdateProfile";
 import SignIn from "./Components/SignIn";
+import CalorieTracker from "./Components/CalorieTracker"
 import Protected from "./Components/Protected";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/recipes" element={<Index />} />
             <Route path="/newprofile" element={<NewProfile />} />
             <Route path="/profile" element={<Protected><Profile /></Protected>} />
+            <Route path="/calorietracker" element={<CalorieTracker />} />
             <Route path="/recipe/:id" element={<Show />} />
             <Route path="/updateprofile" element={<UpdateProfile />} />
           </Routes>
