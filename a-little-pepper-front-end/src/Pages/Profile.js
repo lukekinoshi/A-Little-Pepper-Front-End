@@ -3,6 +3,7 @@ import { UserAuth } from "../Context/AuthContext";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
+import CalorieTracker from "../Components/CalorieTracker";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -70,6 +71,10 @@ export default function Profile() {
       <Button onClick={editProfile} className="mt-5" variant="warning">
         Edit Profile
       </Button>
+
+      <article>
+        <CalorieTracker/>
+      </article>
     </div>
   );
 }
