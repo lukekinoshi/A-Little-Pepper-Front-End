@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 
-
 import Recipe from "./Recipe";
 
 
@@ -13,17 +12,15 @@ import Recipe from "./Recipe";
 
 export default function Homepage() {
 
-
     const [recipes, setRecipes] = useState([]);
     const [input1, setInput1] = useState('');
- 
+  
 
 
     // const navigate = useNavigate();
 
     const getRecipes = () => {
         // axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input},${input2},${input3}`)
-
         axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=df49e55434e34cab8f10d2a1cad00bee&ingredients=${input1}`)
             .then(res => setRecipes(res.data))
 
@@ -60,9 +57,7 @@ export default function Homepage() {
                                     type="text"
                                     onChange={(e) => setInput1(e.target.value)}
                                     value={input1}
-
                                     placeholder="example: chicken,flour,salt"
-
                                     required
                                 />
                                 {/* <Form.Label>Ingredient 2</Form.Label>
@@ -100,6 +95,7 @@ export default function Homepage() {
             </Form>
             <article>
 
+
                 <Row xs={1} md={2} lg={3} className="g-5 py-5">
                     {recipes.map((recipe) => {
                         return (
@@ -109,6 +105,7 @@ export default function Homepage() {
                         )
                     })}
                 </Row>
+
 
             </article>
         </>
