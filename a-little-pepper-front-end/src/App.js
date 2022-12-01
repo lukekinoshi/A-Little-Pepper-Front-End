@@ -8,7 +8,6 @@ import SignIn from "./Components/SignIn";
 import Protected from "./Components/Protected";
 import RecipeDetails from "./Components/RecipeDetails";
 
-import Index from "./Pages/Index";
 import Profile from "./Pages/Profile";
 
 
@@ -21,7 +20,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signin" element={<SignIn />} />
-            <Route path="/recipes" element={<Index />} />
             <Route path="/profile" element={<Protected><Profile /></Protected>} />
             <Route path="/recipe/:id" element={<RecipeDetails />} />
           </Routes>
