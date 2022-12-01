@@ -3,7 +3,9 @@ import { Row, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
+
 import Recipe from "./Recipe";
+
 
 // const ACCESS_POINT = process.env.ACCESS_POINT;
 // const API_KEY = process.env.API_KEY;
@@ -14,12 +16,14 @@ export default function Homepage() {
     const [input1, setInput1] = useState('');
   
 
+
     // const navigate = useNavigate();
 
     const getRecipes = () => {
         // axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input},${input2},${input3}`)
         axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=df49e55434e34cab8f10d2a1cad00bee&ingredients=${input1}`)
             .then(res => setRecipes(res.data))
+
             .catch(error => console.error(error))
     }
 
@@ -28,6 +32,8 @@ export default function Homepage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setInput1(input1);
+
+
         getRecipes();
     };
 
@@ -69,7 +75,9 @@ export default function Homepage() {
                                     type="text"
                                     onChange={(e) => setInput3(e.target.value)}
                                     value={input3}
+
                                 /> */}
+
                                 <div className=" mb-5">
                                     <Button
                                         type="submit"
@@ -86,6 +94,8 @@ export default function Homepage() {
                 </div>
             </Form>
             <article>
+
+
                 <Row xs={1} md={2} lg={3} className="g-5 py-5">
                     {recipes.map((recipe) => {
                         return (
@@ -95,6 +105,8 @@ export default function Homepage() {
                         )
                     })}
                 </Row>
+
+
             </article>
         </>
     )
