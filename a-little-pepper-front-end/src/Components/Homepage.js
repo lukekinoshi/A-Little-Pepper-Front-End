@@ -15,8 +15,6 @@ export default function Homepage() {
     const [recipes, setRecipes] = useState([]);
     const [input1, setInput1] = useState('');
   
-
-
     // const navigate = useNavigate();
 
     const getRecipes = () => {
