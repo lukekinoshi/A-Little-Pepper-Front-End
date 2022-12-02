@@ -20,10 +20,9 @@ export default function Homepage() {
     // const navigate = useNavigate();
 
     const getRecipes = () => {
-        // axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input},${input2},${input3}`)
+        // axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input1}`)
         axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=df49e55434e34cab8f10d2a1cad00bee&ingredients=${input1}`)
             .then(res => setRecipes(res.data))
-
             .catch(error => console.error(error))
     }
 
