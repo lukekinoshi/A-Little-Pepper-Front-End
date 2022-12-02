@@ -14,14 +14,14 @@ export default function RecipeDetails() {
 
   const getInstructions = () => {
     // axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input1}`)
-    axios.get(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=df49e55434e34cab8f10d2a1cad00bee`)
+    axios.get(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=2a7afb1b7ce041f181cc367985fd5f7b`)
       .then(res => setInstructions(res.data))
       .catch(error => console.error(error))
   }
 
   const getNutrition = () => {
     // axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input1}`)
-    axios.get(`https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=df49e55434e34cab8f10d2a1cad00bee`)
+    axios.get(`https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=2a7afb1b7ce041f181cc367985fd5f7b`)
       .then(res => setNutrition(res.data))
       .catch(error => console.error(error))
   }
