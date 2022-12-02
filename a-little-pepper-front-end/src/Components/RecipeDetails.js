@@ -27,6 +27,8 @@ export default function RecipeDetails() {
   }
   // getInstructions();
   // getNutrition();
+  //^^ these two invokes runs the axios fetch but it there is no way to stop it so i keeps sending requests and have used my the daily quota
+
 
   // console.log(instructions)
   // console.log(nutrition)
