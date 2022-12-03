@@ -2,16 +2,18 @@ import axios from "axios";
 import { UserAuth } from "../Context/AuthContext";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Carousel } from "react-bootstrap";
 import CalorieTracker from "../Components/CalorieTracker";
 
 export default function Profile() {
   const navigate = useNavigate();
   const { user, logOut } = UserAuth();
   const [profile, setProfile] = useState([]);
-  const API = process.env.REACT_APP_API_URL;
-
+  const [savedRecipes, setSavedRecipes] = useState([1,2,3]);
   
+  const API = process.env.REACT_APP_API_URL;
+  
+
   useEffect(() => {
     axios.get(`${API}/profiles/${user.uid}`).then((response) => {
       setProfile(response.data);
@@ -33,8 +35,9 @@ export default function Profile() {
 
   return (
     <div className="my-5" style={{ color: "black" }}>
-      <h2>Welcome {user.displayName} </h2>
-      <h3>{user.uid}</h3>
+      <article className="mb-5">
+        <CalorieTracker />
+      </article>
       <div>
         <Card style={{ backgroundColor: "orange", alignItems: "center" }}>
           <Card.Img
@@ -44,32 +47,42 @@ export default function Profile() {
           />
           <Card.Body>
             {/* <h1>lol</h1> */}
-            <Card.Title>{profile.name}</Card.Title>
-            <Card.Title>Profile</Card.Title>
-            <Card.Subtitle className="mb = ">{user.displayName}</Card.Subtitle>
-            <Card.Text>{profile.cal}</Card.Text>
-            <Card.Text>{profile.fat}</Card.Text>
-            <Card.Text>{profile.carb}</Card.Text>
-            <Card.Text>{profile.protein}</Card.Text>
-          </Card.Body>
-
-          <Card.Body>
-            <Card.Text>What to put here?</Card.Text>
+            <Card.Title>{user.displayName}</Card.Title>
+            <Card.Text>Calories: {profile.cal}</Card.Text>
+            <Card.Text>Fat: {profile.fat}</Card.Text>
+            <Card.Text>Carbs: {profile.carb}</Card.Text>
+            <Card.Text>Protein: {profile.protein}</Card.Text>
           </Card.Body>
         </Card>
         <div
           className="d-flex align-items-center justify-content-center"
           style={{ gap: ".5rem" }}
         >
-          <Button variant="outline-dark" onClick={handleSignOut}>
+          <Button variant="light" onClick={handleSignOut}>
             Sign Out
           </Button>
         </div>
+        <section className="my-5">
+          <h2>Bookmarked Recipes</h2>
+          <Carousel>
+          {savedRecipes.map((recipe) => {
+                        return (
+                          <Carousel.Item>
+                          <img
+                            className="d-block w-100"
+                            src="holder.js/800x400?text=First slide&bg=f5f5f5"
+                            alt="First slide"
+                          />
+                          <Carousel.Caption>
+                            <h5>First slide label</h5>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                          </Carousel.Caption>
+                        </Carousel.Item>
+                        )
+                    })}
+          </Carousel>
+        </section>
       </div>
-
-      <article>
-        <CalorieTracker/>
-      </article>
     </div>
   );
 }
