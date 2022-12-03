@@ -16,26 +16,6 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              {/* <Nav.Link as={Link} to="/">
-                Example
-              </Nav.Link>
-              <Nav.Link as={Link} to="/">
-                Example
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/"}>
-                Example
-              </Nav.Link>
-              <Nav.Link as={Link} to="/">
-                Example
-              </Nav.Link> */}
-               <Nav.Link as={Link} to={"/"}>
-                Calorie Tracker
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/"}>
-                Saved Recipes
-              </Nav.Link>
-            </Nav>
-            <Nav>
               {/* Below is the conditional for if a user is signed in or not
               Button will change from Sign in to Username  */}
               {user ? (
