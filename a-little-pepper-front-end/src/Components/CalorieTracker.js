@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 // import ProgressBar from "./ProgressBar";
-import { Form } from "react-bootstrap";
+import { Form, Row } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 export default function CalorieTracker() {
@@ -31,15 +31,45 @@ export default function CalorieTracker() {
           />
         ))}
       </form> */}
-      
-        <div>
-            <h2>Tracker</h2>
-          <ProgressBar striped animated variant="success" now={40} label={`40%`}/>
-          <ProgressBar striped animated variant="info" now={20} label={`20%`}/>
-          <ProgressBar striped animated variant="warning" now={60} label={`60%`}/>
-          <ProgressBar striped animated variant="danger" now={80} label={`80%`}/>
 
-        </div>
+      <div>
+        <h2>Tracker</h2>
+        <Row className="justify-content-center g-2">
+          <ProgressBar
+            style={{ width: "51%" }}
+            striped
+            animated
+            variant="success"
+            now={40}
+            label={`Calories`}
+          />
+
+          <ProgressBar
+            style={{ width: "51%" }}
+            striped
+            animated
+            variant="info"
+            now={20}
+            label={`Fat`}
+          />
+          <ProgressBar
+            style={{ width: "51%" }}
+            striped
+            animated
+            variant="warning"
+            now={60}
+            label={`Carbs`}
+          />
+          <ProgressBar
+            style={{ width: "51%" }}
+            striped
+            animated
+            variant="danger"
+            now={80}
+            label={`Protein`}
+          />
+        </Row>
+      </div>
     </div>
   );
 }
