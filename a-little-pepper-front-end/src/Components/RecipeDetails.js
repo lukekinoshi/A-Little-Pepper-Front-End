@@ -14,7 +14,7 @@ export default function RecipeDetails() {
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
   const [directions, setDirections] = useState('');
-  const [price, setPrice] = useState([])
+  const [prices, setPrices] = useState([])
 
   let { id } = useParams();
   const { user } = UserAuth();
@@ -66,12 +66,13 @@ export default function RecipeDetails() {
       .get(
         `${ACCESS_POINT}/${id}/priceBreakdownWidget.json?apiKey=${API_KEY}`
       )
-      .then((res) => setPrice(res.data))
+      .then((res) => setPrices(res.data))
       .catch((error) => console.error(error));
 
   }, []);
 
   let ingredient = ingredients.ingredients;
+  let price = prices.ingredients
 
   console.log(price);
 
@@ -97,6 +98,18 @@ export default function RecipeDetails() {
           return (
             <Card bg="warning" variant="light" style={{ alignItems: "center" }}>
               <Card.Title>{item.amount.us.value} {item.amount.us.unit}  of {item.name} </Card.Title>
+            </Card>
+          )
+        } )}
+      </article>
+      <br></br>
+      <br></br>
+      <h1>Ingredients Price Breakdown</h1>
+      <article>
+        {price && price.map(item => {
+          return (
+            <Card bg="warning" variant="light" style={{ alignItems: "center" }}>
+              <Card.Title>{item.name} : ${Math.round(10 * item.price) / 100} </Card.Title>
             </Card>
           )
         } )}
