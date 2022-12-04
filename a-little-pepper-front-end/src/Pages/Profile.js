@@ -49,7 +49,9 @@ export default function Profile() {
       {profile.id ? (
         <>
           <article className="mb-5">
-            <CalorieTracker />
+            <CalorieTracker 
+            profile={profile} 
+            />
           </article>
           <div>
             <Card style={{ backgroundColor: "orange", alignItems: "center" }}>

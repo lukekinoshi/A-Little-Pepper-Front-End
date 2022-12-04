@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { Form, Row } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-export default function CalorieTracker() {
+export default function CalorieTracker({profile}) {
+
   const [recipes, setRecipes] = useState([]);
   const [totCal, setTotCal] = useState(2000);
 
@@ -40,7 +41,7 @@ export default function CalorieTracker() {
             striped
             animated
             variant="success"
-            now={40}
+            now={profile.cal / 2000 * 100}
             label={`Calories`}
           />
 
@@ -49,7 +50,7 @@ export default function CalorieTracker() {
             striped
             animated
             variant="info"
-            now={20}
+            now={profile.fat / 55.56 * 100}
             label={`Fat`}
           />
           <ProgressBar
@@ -57,7 +58,7 @@ export default function CalorieTracker() {
             striped
             animated
             variant="warning"
-            now={60}
+            now={profile.carb / 250 * 100}
             label={`Carbs`}
           />
           <ProgressBar
@@ -65,7 +66,7 @@ export default function CalorieTracker() {
             striped
             animated
             variant="danger"
-            now={80}
+            now={profile.protein / 125 * 100 }
             label={`Protein`}
           />
         </Row>
