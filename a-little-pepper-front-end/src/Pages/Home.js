@@ -46,7 +46,7 @@ export default function Homepage() {
                     >
                         <div className="content mx-auto">
                             <Row className="g-6">
-                                <Form.Label>Add Ingredints Seperated by Commas</Form.Label>
+                                <Form.Label>Enter Ingredients Seperated by Commas</Form.Label>
                                 <Form.Control
                                     className="mb-3"
                                     size="md"
