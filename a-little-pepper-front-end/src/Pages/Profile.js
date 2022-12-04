@@ -2,27 +2,23 @@ import axios from "axios";
 import { UserAuth } from "../Context/AuthContext";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, Button, Carousel } from "react-bootstrap";
+import { Card, Button, Row } from "react-bootstrap";
 import CalorieTracker from "../Components/CalorieTracker";
-import RecipeCarousel from "../Components/RecipeCarousel";
+import RecipeCard from "../Components/RecipeCard";
 
 export default function Profile() {
   const navigate = useNavigate();
   const { user, logOut } = UserAuth();
   const [profile, setProfile] = useState([]);
-  const [savedRecipes, setSavedRecipes] = useState([])
+  const [savedRecipes, setSavedRecipes] = useState([]);
   const API = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     axios.get(`${API}/profiles/${user.uid}`).then((response) => {
       setProfile(response.data);
-      console.log("hello")
-      console.log(response.data)
-      setSavedRecipes(response.data.recipes)
+      setSavedRecipes(response.data.recipes);
     });
   }, []);
-
- 
 
   const handleSignOut = async () => {
     try {
@@ -64,11 +60,15 @@ export default function Profile() {
         </div>
         <section className="my-5">
           <h2>Bookmarked Recipes</h2>
-          <Carousel>
+          <Row xs={1} md={2} lg={3} className="g-5 py-5">
             {savedRecipes.map((recipe) => {
-              return <RecipeCarousel recipe={recipe} />;
+              return (
+                <>
+                  <RecipeCard recipe={recipe} />
+                </>
+              );
             })}
-          </Carousel>
+          </Row>
         </section>
       </div>
     </div>
