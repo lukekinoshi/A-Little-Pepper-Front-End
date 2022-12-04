@@ -66,13 +66,21 @@ export default function RecipeDetails() {
       .get(
         `${ACCESS_POINT}/${id}/priceBreakdownWidget.json?apiKey=${API_KEY}`
       )
-      .then((res) => setPrices(res.data))
+      .then((res) => setPrices(res.data.ingredients))
       .catch((error) => console.error(error));
 
   }, []);
 
   let ingredient = ingredients.ingredients;
-  let price = prices.ingredients
+  let price = prices;
+
+  let priceSum = 0;
+  let priceArr = price.map((item) => Number(item.price))
+  priceArr.forEach(amount => {
+    priceSum += amount;
+    return priceSum;
+  })
+
 
   console.log(price);
 
@@ -113,6 +121,7 @@ export default function RecipeDetails() {
             </Card>
           )
         } )}
+        <h2>Total Cost: ${Math.round(10 * priceSum) / 100}</h2>
       </article>
       <br></br>
       <br></br>
