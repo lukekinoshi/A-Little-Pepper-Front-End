@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthContextProvider } from "./Context/AuthContext";
+import { AuthContextProvider} from "./Context/AuthContext";
 
 import NavBar from "./Components/NavBar";
 import Home from "./Pages/Home";
@@ -12,6 +12,7 @@ import Profile from "./Pages/Profile";
 
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
@@ -20,7 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signin" element={<SignIn />} />
-            <Route path="/profile" element={<Protected><Profile /></Protected>} />
+            <Route path="/profile" element={<Protected><Profile/></Protected>} />
             <Route path="/recipe/:id" element={<RecipeDetails />} />
           </Routes>
         </AuthContextProvider>

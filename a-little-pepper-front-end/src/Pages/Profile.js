@@ -4,21 +4,25 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Button, Carousel } from "react-bootstrap";
 import CalorieTracker from "../Components/CalorieTracker";
+import RecipeCarousel from "../Components/RecipeCarousel";
 
 export default function Profile() {
   const navigate = useNavigate();
   const { user, logOut } = UserAuth();
   const [profile, setProfile] = useState([]);
-  const [savedRecipes, setSavedRecipes] = useState([1,2,3]);
-  
+  const [savedRecipes, setSavedRecipes] = useState([])
   const API = process.env.REACT_APP_API_URL;
-  
 
   useEffect(() => {
     axios.get(`${API}/profiles/${user.uid}`).then((response) => {
       setProfile(response.data);
+      console.log("hello")
+      console.log(response.data)
+      setSavedRecipes(response.data.recipes)
     });
   }, []);
+
+ 
 
   const handleSignOut = async () => {
     try {
@@ -27,10 +31,6 @@ export default function Profile() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const editProfile = () => {
-    navigate(`/`);
   };
 
   return (
@@ -65,21 +65,9 @@ export default function Profile() {
         <section className="my-5">
           <h2>Bookmarked Recipes</h2>
           <Carousel>
-          {savedRecipes.map((recipe) => {
-                        return (
-                          <Carousel.Item>
-                          <img
-                            className="d-block w-100"
-                            src="holder.js/800x400?text=First slide&bg=f5f5f5"
-                            alt="First slide"
-                          />
-                          <Carousel.Caption>
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                          </Carousel.Caption>
-                        </Carousel.Item>
-                        )
-                    })}
+            {savedRecipes.map((recipe) => {
+              return <RecipeCarousel recipe={recipe} />;
+            })}
           </Carousel>
         </section>
       </div>
