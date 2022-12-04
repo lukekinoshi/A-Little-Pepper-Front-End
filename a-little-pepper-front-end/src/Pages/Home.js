@@ -7,8 +7,8 @@ import axios from "axios";
 import Recipe from "../Components/Recipe";
 
 
-// const ACCESS_POINT = process.env.ACCESS_POINT;
-// const API_KEY = process.env.API_KEY;
+const ACCESS_POINT = process.env.REACT_APP_ACCESS_POINT;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default function Homepage() {
 
@@ -18,8 +18,7 @@ export default function Homepage() {
     // const navigate = useNavigate();
 
     const getRecipes = () => {
-        // axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input1}`)
-        axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=9ab6abef58ff4088ab12f31009f1a8a9&ingredients=${input1}`)
+        axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input1}`)
             .then(res => setRecipes(res.data))
             .catch(error => console.error(error))
     }
@@ -107,4 +106,4 @@ export default function Homepage() {
             </article>
         </>
     )
-}
+                }
