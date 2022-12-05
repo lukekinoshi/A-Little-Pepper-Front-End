@@ -6,57 +6,54 @@ import axios from "axios";
 
 import Recipe from "../Components/Recipe";
 
-
 const ACCESS_POINT = process.env.REACT_APP_ACCESS_POINT;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default function Homepage() {
+  const [recipes, setRecipes] = useState([]);
+  const [input1, setInput1] = useState("");
 
-    const [recipes, setRecipes] = useState([]);
-    const [input1, setInput1] = useState('');
-  
-    // const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-    const getRecipes = () => {
-        axios.get(`${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input1}`)
-            .then(res => setRecipes(res.data))
-            .catch(error => console.error(error))
-    }
+  const getRecipes = () => {
+    axios
+      .get(
+        `${ACCESS_POINT}/findByIngredients?apiKey=${API_KEY}&ingredients=${input1}`
+      )
+      .then((res) => setRecipes(res.data))
+      .catch((error) => console.error(error));
+  };
 
-    // const name = searchRecipe.name
+  // const name = searchRecipe.name
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setInput1(input1);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setInput1(input1);
 
+    getRecipes();
+  };
 
-        getRecipes();
-    };
+  console.log(recipes);
 
-    console.log(recipes)
-
-    return (
-        <>
-            <h2>Put in Your Ingredients!</h2>
-            <Form onSubmit={handleSubmit}>
-                <div className="row">
-                    <main
-                        className="col-lg-12 mx-auto"
-                        style={{ maxWidth: "300px" }}
-                    >
-                        <div className="content mx-auto">
-                            <Row className="g-6">
-                                <Form.Label>Enter Ingredients Seperated by Commas</Form.Label>
-                                <Form.Control
-                                    className="mb-3"
-                                    size="md"
-                                    type="text"
-                                    onChange={(e) => setInput1(e.target.value)}
-                                    value={input1}
-                                    placeholder="example: chicken,flour,salt"
-                                    required
-                                />
-                                {/* <Form.Label>Ingredient 2</Form.Label>
+  return (
+    <>
+      <h2>Put in Your Ingredients!</h2>
+      <Form onSubmit={handleSubmit}>
+        <div className="row">
+          <main className="col-lg-12 mx-auto" style={{ maxWidth: "300px" }}>
+            <div className="content mx-auto">
+              <Row className="g-6">
+                <Form.Label>Enter Ingredients Seperated by Commas</Form.Label>
+                <Form.Control
+                  className="mb-3"
+                  size="md"
+                  type="text"
+                  onChange={(e) => setInput1(e.target.value)}
+                  value={input1}
+                  placeholder="example: chicken,flour,salt"
+                  required
+                />
+                {/* <Form.Label>Ingredient 2</Form.Label>
                                 <Form.Control
                                     className="mb-3"
                                     size="md"
@@ -74,36 +71,32 @@ export default function Homepage() {
 
                                 /> */}
 
-                                <div className=" mb-5">
-                                    <Button
-                                        type="submit"
-                                        style={{ maxWidth: "200px" }}
-                                        variant="danger"
-                                        size="md"
-                                    >
-                                        Let's get spicy 🌶
-                                    </Button>
-                                </div>
-                            </Row>
-                        </div>
-                    </main>
+                <div className=" mb-5">
+                  <Button
+                    type="submit"
+                    style={{ maxWidth: "200px" }}
+                    variant="danger"
+                    size="md"
+                  >
+                    Let's get spicy 🌶
+                  </Button>
                 </div>
-            </Form>
-            <article>
-
-
-                <Row xs={1} md={2} lg={3} className="g-5 py-5">
-                    {recipes.map((recipe) => {
-                        return (
-                            <>
-                                <Recipe recipe={recipe} />
-                            </>
-                        )
-                    })}
-                </Row>
-
-
-            </article>
-        </>
-    )
-                }
+              </Row>
+            </div>
+          </main>
+        </div>
+      </Form>
+      <article>
+        <Row xs={1} md={2} lg={3} className="g-5 py-5">
+          {recipes.map((recipe) => {
+            return (
+              <>
+                <Recipe recipe={recipe} />
+              </>
+            );
+          })}
+        </Row>
+      </article>
+    </>
+  );
+}
