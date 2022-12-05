@@ -79,7 +79,7 @@ export default function Profile() {
             </div>
             <section className="my-5">
               <h2>Bookmarked Recipes</h2>
-              {/* <Row xs={1} md={2} lg={3} className="g-5 py-5">
+              <Row xs={1} md={2} lg={3} className="g-5 py-5">
             {savedRecipes.map((recipe) => {
               return (
                 <>
@@ -87,7 +87,7 @@ export default function Profile() {
                 </>
               );
             })}
-          </Row> */}
+          </Row>
             </section>
           </div>
         </>
