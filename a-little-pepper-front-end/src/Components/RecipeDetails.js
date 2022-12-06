@@ -13,7 +13,6 @@ export default function RecipeDetails() {
   const [nutrition, setNutrition] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
-  const [directions, setDirections] = useState("");
   const [prices, setPrices] = useState([]);
 
   let { id } = useParams();
@@ -22,7 +21,7 @@ export default function RecipeDetails() {
 
   const handleBookmark = () => {
     let savedRecipes = []
-    if(profile.recipes.length < 1){
+    if (profile.recipes.length < 1) {
       savedRecipes = [id]
     } else {
       savedRecipes = [...profile.recipes, id]
@@ -53,18 +52,18 @@ export default function RecipeDetails() {
     console.log(newProtein)
 
     axios
-    .put(`${API}/profiles/${user.uid}`, {
-      uid: user.uid,
-      name: user.displayName,
-      cal: 50,
-      fat: 10,
-      carb: 5,
-      protein: 15,
-      recipes: profile.recipes,
-    })
-    .then(() => {
-      console.log("update sent");
-    });
+      .put(`${API}/profiles/${user.uid}`, {
+        uid: user.uid,
+        name: user.displayName,
+        cal: 50,
+        fat: 10,
+        carb: 5,
+        protein: 15,
+        recipes: profile.recipes,
+      })
+      .then(() => {
+        console.log("update sent");
+      });
   };
 
   useEffect(() => {
@@ -90,8 +89,7 @@ export default function RecipeDetails() {
     axios
       .get(`${ACCESS_POINT}/${id}/analyzedInstructions?apiKey=${API_KEY}`)
       .then((res) => {
-        setInstructions(res.data);
-        setDirections(res.data[0].steps[0].step);
+        setInstructions(res.data[0].steps);
       })
       .catch((error) => console.error(error));
 
@@ -110,6 +108,9 @@ export default function RecipeDetails() {
     priceSum += amount;
     return priceSum;
   });
+
+  // console.log(instructions)
+
   return (
     <article className="RecipeDetails">
       <h6>Recipe ID:{id}</h6>
@@ -119,8 +120,9 @@ export default function RecipeDetails() {
       <br></br>
       <br></br>
       <span>
-        <h3>{nutrition.calories}ilo calories</h3>
-        <h6>*Note: 1000kilo calories = 1 calorie</h6>
+        <h3>Calorie: {nutrition.calories}cal</h3>
+        <h6>*Note:
+          To ease calculations, energy is expressed in 1000-calorie units known as kilocalories. That is, 1 Calorie is equivalent to 1 kilocalorie; the capital C in Calories denotes kcal on food labels, calories and kilocalories are used interchangeably to mean the same thing. For example: 1kcal = 1 calorie. </h6>
         <h3>Fat: {nutrition.fat}</h3>
         <h3>Carbohydrates: {nutrition.carbs}</h3>
         <h3>Protein: {nutrition.protein}</h3>
@@ -168,9 +170,13 @@ export default function RecipeDetails() {
       <br></br>
       <h1>Instructions</h1>
       <article>
-        <Card bg="warning" variant="light" style={{ alignItems: "center" }}>
-          <Card.Title>{directions}</Card.Title>
-        </Card>
+        {instructions && instructions.map((instruction) => {
+          return (
+            <Card bg="warning" variant="light" style={{ alignItems: "center" }}>
+              <Card.Title>Step {instruction.number}: {instruction.step}</Card.Title>
+            </Card>
+          )
+        })}
       </article>
       <br></br>
       <div
