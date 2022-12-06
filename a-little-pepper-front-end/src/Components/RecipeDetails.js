@@ -41,11 +41,15 @@ export default function RecipeDetails() {
       });
   };
 
+  const makeNum = (str) => {
+    return str.replace(/\D/g, '') * 1;
+  }
   const handleTrack = () => {
-    let newCal = profile.cal + nutrition.calories
-    let newFat = profile.fat + nutrition.fat
-    let newCarb = profile.carb + nutrition.carbs
-    let newProtein = profile.protein + nutrition.protein
+
+    let newCal = profile.cal + makeNum(nutrition.calories);
+    let newFat = profile.fat + makeNum(nutrition.fat);
+    let newCarb = profile.carb + makeNum(nutrition.carbs);
+    let newProtein = profile.protein + makeNum(nutrition.protein);
     console.log(newCal)
     console.log(newFat)
     console.log(newCarb)
@@ -55,10 +59,10 @@ export default function RecipeDetails() {
       .put(`${API}/profiles/${user.uid}`, {
         uid: user.uid,
         name: user.displayName,
-        cal: 50,
-        fat: 10,
-        carb: 5,
-        protein: 15,
+        cal: newCal,
+        fat: newFat,
+        carb: newCarb,
+        protein: newProtein,
         recipes: profile.recipes,
       })
       .then(() => {

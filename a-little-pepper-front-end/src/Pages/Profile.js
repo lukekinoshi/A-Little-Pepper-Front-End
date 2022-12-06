@@ -53,21 +53,25 @@ export default function Profile() {
             profile={profile} 
             />
           </article>
+              <h2>Tracked Nutrition</h2>
           <div>
-            <Card style={{ backgroundColor: "orange", alignItems: "center" }}>
+            <Card className="my-6" style={{ backgroundColor: "orange", alignItems: "center" }}>
               <Card.Img
                 variant="top"
                 // src={profile.picture}
                 // style={{ width: "300px" ,borderRadius: "50%"}}
               />
-              <Card.Body>
+              
                 {/* <h1>lol</h1> */}
-                <Card.Title>{user.displayName}</Card.Title>
-                <Card.Text>Calories: {profile.cal}</Card.Text>
-                <Card.Text>Fat: {profile.fat}</Card.Text>
-                <Card.Text>Carbs: {profile.carb}</Card.Text>
-                <Card.Text>Protein: {profile.protein}</Card.Text>
-              </Card.Body>
+                <Card.Subtitle>User: {user.displayName}</Card.Subtitle>
+                <Card.Body>
+                <Card.Text>Calories: {profile.cal}kcal / 2000kcal</Card.Text>
+                <Card.Text>Fat: {profile.fat}g / 55.56g</Card.Text>
+                <Card.Text>Carbs: {profile.carb}g / 255g</Card.Text>
+                <Card.Text>Protein: {profile.protein}g / 125g</Card.Text>
+                </Card.Body>
+                <Card.Footer>Note: These are reccomended values for an average person. Values may differ based on weight, height, and/or lifestyle. </Card.Footer>
+              
             </Card>
             <div
               className="d-flex align-items-center justify-content-center"
