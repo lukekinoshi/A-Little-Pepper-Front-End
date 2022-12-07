@@ -15,11 +15,13 @@ export default function Profile() {
   const [create, setCreate] = useState(false)
 
   useEffect(() => {
-    axios.get(`${API}/profiles/${user.uid}`).then((response) => {
-      setProfile(response.data);
-      setSavedRecipes(response.data.recipes);
-    });
-  }, [create]);
+    if(!profile.id){
+      axios.get(`${API}/profiles/${user.uid}`).then((response) => {
+        setProfile(response.data);
+        setSavedRecipes(response.data.recipes);
+      });
+    }
+  }, [create, user]);
 
   const handleSignOut = async () => {
     try {

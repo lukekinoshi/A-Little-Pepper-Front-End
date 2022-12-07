@@ -20,6 +20,10 @@ export default function RecipeDetails() {
   const [profile, setProfile] = useState([]);
 
   const handleBookmark = () => {
+    if(profile.recipes.includes(id)){
+      alert("Already Bookmarked!")
+      return
+    }
     let savedRecipes = []
     if (profile.recipes.length < 1) {
       savedRecipes = [id]
@@ -71,7 +75,7 @@ export default function RecipeDetails() {
   };
 
   useEffect(() => {
-    axios.get(`${API}/profiles/${user.uid}`).then((response) => {
+    axios.get(`${API}/profiles/${profile.uid}`).then((response) => {
       setProfile(response.data);
     });
   }, [profile]);
@@ -117,9 +121,9 @@ export default function RecipeDetails() {
 
   return (
     <article className="RecipeDetails">
-      <h6>Recipe ID:{id}</h6>
-      <h6>User:{profile.name}</h6>
-      <br></br>
+      {/* <h6>Recipe ID:{id}</h6>
+      <h6>User:{profile.name}</h6> */}
+      {/* <br></br> */}
       <h1>Nutritional Information</h1>
       <br></br>
       <br></br>
@@ -183,7 +187,7 @@ export default function RecipeDetails() {
         })}
       </article>
       <br></br>
-      <div
+     {!profile.id ? ( <div
         className="d-flex align-items-center justify-content-center"
         style={{ gap: ".5rem" }}
       >
@@ -193,7 +197,7 @@ export default function RecipeDetails() {
         <Button variant="light" onClick={handleBookmark}>
           Bookmark
         </Button>
-      </div>
+      </div>) : <></>}
     </article>
   );
 }
