@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 // import ProgressBar from "./ProgressBar";
-import { Form, Row } from "react-bootstrap";
+import { Button, Form, Row } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 export default function CalorieTracker({profile}) {
 
   const [recipes, setRecipes] = useState([]);
   const [totCal, setTotCal] = useState(2000);
+  const [diet, setDiet] = useState("regular")
 
   let calSum = 0;
   let calArr = recipes.map((recipe) => Number(recipe.cal));
@@ -16,6 +17,10 @@ export default function CalorieTracker({profile}) {
     calSum += amount;
     return calSum;
   });
+
+  const handleDiet = (e) => {
+    setDiet(e.target.value)
+  }
 
   const calorieBar = [
     { bgcolor: "#6a1b9a", completed: Math.round((calSum / totCal) * 100) },
@@ -70,6 +75,21 @@ export default function CalorieTracker({profile}) {
             label={`Protein`}
           />
         </Row>
+       
+        <div
+        className="mt-4 d-flex align-items-center justify-content-center"
+        style={{ gap: ".5rem" }}
+      >
+        <Button variant="light" onClick={handleDiet} value={"Average"}>
+          Average
+        </Button>
+        <Button variant="light" onClick={handleDiet} value={"Athlete"}>
+          Athlete
+        </Button>
+        <Button variant="light" onClick={handleDiet} value={"Weight-Loss"}>
+          Weight-Loss
+        </Button>
+      </div>
       </div>
     </div>
   );
