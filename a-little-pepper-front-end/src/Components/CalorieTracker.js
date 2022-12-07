@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import ProgressBar from "./ProgressBar";
 import { Button, Form, Row } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 export default function CalorieTracker({profile}) {
 
   const [recipes, setRecipes] = useState([]);
+  const [diet, setDiet] = useState("regular");
   const [totCal, setTotCal] = useState(2000);
-  const [diet, setDiet] = useState("regular")
+  const [totFat, setTotFat] = useState(55.56);
+  const [totCarb, setTotCarb] = useState(250);
+  const [totProtein, setTotProtein] = useState(125);
+
 
   let calSum = 0;
   let calArr = recipes.map((recipe) => Number(recipe.cal));
@@ -20,24 +23,19 @@ export default function CalorieTracker({profile}) {
 
   const handleDiet = (e) => {
     setDiet(e.target.value)
-  }
 
-  const calorieBar = [
-    { bgcolor: "#6a1b9a", completed: Math.round((calSum / totCal) * 100) },
-  ];
+    if(diet === "Average"){
+      setTotCal(2000);
+      setTotFat(22.26);
+      setTotCarb(250);
+      setTotProtein(125);
+    }
+
+
+  }
 
   return (
     <div>
-      {/* <form>
-        {calorieBar.map((item, idx) => (
-          <ProgressBar
-            key={idx}
-            bgcolor={item.bgcolor}
-            completed={item.completed}
-          />
-        ))}
-      </form> */}
-
       <div>
         <h2>Tracker</h2>
         <Row className="justify-content-center g-2">
