@@ -1,22 +1,17 @@
 import React from "react";
-import { Col, Card } from "react-bootstrap";
+import { Col, Card, Image } from "react-bootstrap";
 
 export default function RecipeList({ recipe }) {
   return (
     <div>
       <Col className="overflow-hidden">
-        <Card bg="light" variant="light" style={{ alignItems: "center" }}>
-          <Card.Img
-            className="py-3"
-            variant="top"
-            src={recipe.image}
-            style={{ width: "250px", borderRadius: "50%" }}
-          />
+        <Card border= "light" variant="light" style={{ alignItems: "center" }}>
           <Card.Body>
-            <Card.Title>
+            <Image roundedCircle="true" src={recipe.image} style= {{border: "2px solid #F8C771"}}/>
+            <Card.Title className="mt-3">
               <Card.Link
                 href={`/recipe/${recipe.id}`}
-                style={{ color: "green" }}
+                style={{ color: "#FB8F00" }}
               >
                 {recipe.title}
               </Card.Link>
