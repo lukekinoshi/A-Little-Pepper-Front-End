@@ -75,10 +75,12 @@ export default function RecipeDetails() {
   };
 
   useEffect(() => {
-    axios.get(`${API}/profiles/${profile.uid}`).then((response) => {
-      setProfile(response.data);
-    });
-  }, [profile]);
+    if(user){
+      axios.get(`${API}/profiles/${user.uid}`).then((response) => {
+        setProfile(response.data);
+      });
+    }
+  }, [user]);
 
   // const navigate = useNavigate();
   useEffect(() => {
@@ -121,9 +123,7 @@ export default function RecipeDetails() {
 
   return (
     <article className="RecipeDetails">
-      {/* <h6>Recipe ID:{id}</h6>
-      <h6>User:{profile.name}</h6> */}
-      {/* <br></br> */}
+      <h6>User:{profile.name}</h6>
       <h1>Nutritional Information</h1>
       <br></br>
       <br></br>
@@ -187,7 +187,7 @@ export default function RecipeDetails() {
         })}
       </article>
       <br></br>
-     {!profile.id ? ( <div
+     {profile.id ? ( <div
         className="d-flex align-items-center justify-content-center"
         style={{ gap: ".5rem" }}
       >
