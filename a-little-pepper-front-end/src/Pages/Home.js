@@ -36,11 +36,11 @@ export default function Homepage() {
   console.log(recipes);
 
   return (
-    <>
+    <div className="my-5">
       <h2>Put in Your Ingredients!</h2>
       <Form onSubmit={handleSubmit}>
         <div className="row">
-          <main className="col-lg-12 mx-auto" style={{ maxWidth: "300px" }}>
+          <main className="col-lg-12 mx-auto" style={{ maxWidth: "350px" }}>
             <div className="content mx-auto">
               <Row className="g-6">
                 <Form.Label>Enter Ingredients Seperated by Commas</Form.Label>
@@ -97,6 +97,9 @@ export default function Homepage() {
           })}
         </Row>
       </article>
-    </>
+      <section>
+        
+      </section>
+    </div>
   );
 }

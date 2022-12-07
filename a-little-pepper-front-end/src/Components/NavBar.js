@@ -7,14 +7,14 @@ export default function NavBar() {
   const { user } = UserAuth();
 
   return (
-    <div>
-      <Navbar expand="lg" bg="light" variant="light">
-        <Container>
+    <div >
+      <Navbar expand="lg" bg="light" variant="light" style={{ borderBottom: "1px solid #F8C771" }}>
+        <Container >
           <Nav.Link as={Link} to="/" style={{ color: "white" }}>
-            <img src={logo} width="100" height="100" className="" alt="" />
+            <img src={logo} width="85" height="85" className="" alt="" />
           </Nav.Link>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav"> */}
             <Nav className="ms-auto">
               {/* Below is the conditional for if a user is signed in or not
               Button will change from Sign in to Username  */}
@@ -24,11 +24,11 @@ export default function NavBar() {
                 </Nav.Link>
               ) : (
                 <Nav.Link as={Link} to="/signin">
-                  <Button variant="outline-dark">Sign In</Button>
+                  <Button variant="dark">Sign In</Button>
                 </Nav.Link>
               )}
             </Nav>
-          </Navbar.Collapse>
+          {/* </Navbar.Collapse> */}
         </Container>
       </Navbar>
     </div>
