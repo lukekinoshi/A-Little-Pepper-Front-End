@@ -11,7 +11,7 @@ export default function NavBar() {
       <Navbar expand="lg" bg="light" variant="light" style={{ borderBottom: "1px solid #F8C771" }}>
         <Container >
           <Nav.Link as={Link} to="/" style={{ color: "white" }}>
-            <img src={logo} width="85" height="85" className="" alt="" />
+            <img src={logo} width="85" height="85" />
           </Nav.Link>
           {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav"> */}
