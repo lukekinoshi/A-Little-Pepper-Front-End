@@ -6,6 +6,7 @@ import { UserAuth } from "../Context/AuthContext";
 import axios from "axios";
 import image1 from "../Assets/logo.png";
 
+
 const ACCESS_POINT = process.env.REACT_APP_ACCESS_POINT;
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API = process.env.REACT_APP_API_URL;
@@ -57,12 +58,13 @@ export default function RecipeDetails() {
     if (profile.recipes.includes(id)) {
       alert("Already Bookmarked!")
       return
+
     }
-    let savedRecipes = []
+    let savedRecipes = [];
     if (profile.recipes.length < 1) {
-      savedRecipes = [id]
+      savedRecipes = [id];
     } else {
-      savedRecipes = [...profile.recipes, id]
+      savedRecipes = [...profile.recipes, id];
     }
     axios
       .put(`${API}/profiles/${user.uid}`, {
@@ -80,11 +82,12 @@ export default function RecipeDetails() {
   };
 
   const makeNum = (str) => {
+
     return str.replace(/\D/g, '') * 1;
   }
 
-  const handleTrack = () => {
 
+  const handleTrack = () => {
     let newCal = profile.cal + makeNum(nutrition.calories);
     let newFat = profile.fat + makeNum(nutrition.fat);
     let newCarb = profile.carb + makeNum(nutrition.carbs);
@@ -223,5 +226,6 @@ export default function RecipeDetails() {
         })}
     </article>
   </Container>
+
   );
 }

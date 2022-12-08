@@ -8,10 +8,10 @@ export default function NavBar() {
 
   return (
     <div >
-      <Navbar expand="lg" bg="light" variant="light" style={{ borderBottom: "1px solid #F8C771" }}>
+      <Navbar expand="lg" bg="" variant="light" style={{ borderBottom: "1px solid #F8C771", background:"#F8C771"}}>
         <Container >
           <Nav.Link as={Link} to="/" style={{ color: "white" }}>
-            <img src={logo} width="85" height="85" className="" alt="" />
+            <img src={logo} width="85" height="85"  />
           </Nav.Link>
           {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav"> */}
@@ -20,11 +20,11 @@ export default function NavBar() {
               Button will change from Sign in to Username  */}
               {user ? (
                 <Nav.Link as={Link} to="/profile">
-                  <Button variant="outline-dark">Profile</Button>
+                  <Button variant="light">Profile</Button>
                 </Nav.Link>
               ) : (
                 <Nav.Link as={Link} to="/signin">
-                  <Button variant="dark">Sign In</Button>
+                  <Button variant="light">Sign In</Button>
                 </Nav.Link>
               )}
             </Nav>

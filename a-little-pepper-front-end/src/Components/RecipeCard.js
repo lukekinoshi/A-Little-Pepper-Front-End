@@ -21,7 +21,7 @@ function RecipeCard({ recipe }) {
   return (
     <div>
       <Col className="overflow-hidden">
-        <Card bg="warning" variant="light" style={{ alignItems: "center" }}>
+        <Card variant="light" style={{ alignItems: "center", background: "#F8C771" }}>
           <Card.Img
             className="py-3"
             variant="top"

@@ -1,5 +1,5 @@
 import { Row, Form, Button } from "react-bootstrap";
-
+import pepper from "../Assets/chili-pepper.png";
 import { useState } from "react";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
@@ -37,13 +37,18 @@ export default function Homepage() {
 
   return (
     <div className="my-5">
-      <h2>Put in Your Ingredients!</h2>
+      <h2>Search for a recipe</h2>
       <Form onSubmit={handleSubmit}>
         <div className="row">
-          <main className="col-lg-12 mx-auto" style={{ maxWidth: "350px" }}>
+          <main
+            className="col-lg-12 mx-auto py-3"
+            style={{ maxWidth: "350px" }}
+          >
             <div className="content mx-auto">
               <Row className="g-6">
-                <Form.Label>Enter Ingredients Seperated by Commas</Form.Label>
+                <Form.Label>
+                  Enter your ingredients seperated by commas
+                </Form.Label>
                 <Form.Control
                   className="mb-3"
                   size="md"
@@ -78,7 +83,13 @@ export default function Homepage() {
                     variant="danger"
                     size="md"
                   >
-                    Let's get spicy 🌶
+                    Let's Get Spicy
+                    <img
+                      style={{ marginLeft: "5px" }}
+                      src={pepper}
+                      width="25"
+                      height="25"
+                    />
                   </Button>
                 </div>
               </Row>
@@ -97,9 +108,7 @@ export default function Homepage() {
           })}
         </Row>
       </article>
-      <section>
-        
-      </section>
+      <section></section>
     </div>
   );
 }

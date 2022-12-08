@@ -61,7 +61,7 @@ const handleMouseLeave = () => {
         <h2>Tracker</h2>
         <Row className="justify-content-center g-2">
           <ProgressBar
-            style={{ width: "51%" }}
+            style={{ width: "51%"}}
             striped
             animated
             variant="success"
@@ -99,17 +99,23 @@ const handleMouseLeave = () => {
         className="mt-4 d-flex align-items-center justify-content-center"
         style={{ gap: ".5rem" }}
       >
+
         <Button variant="light" onClick={handleDiet} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} value={"Average"}>
+
           Average
           <br></br>
           {/* {showPopup && <h6>This is the default diet that most individuals follow with a balanced ratio of carbohydrates, fats, and protein. This is typically used when a person does not have any specific goals in mind as this is a perfect diet to maintain weight. This assumes that the individual spends the reccomended 30 mminutes of daily activies.</h6>} */}
         </Button>
+
         <Button variant="light" onClick={handleDiet} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} value={"Athlete"}>
+
           Athlete
           <br></br>
           {/* {showPopup && <h6>An athlete diet is for individuals who are active exercising, this includes any type of dynamic movments or muscle-building. The main focus of this diet is high protein consumption to ensure healthy muscle building and enough carbohydrates to maintain energy for these activities. </h6>} */}
         </Button>
+
         <Button variant="light" onClick={handleDiet} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} value={"Weight-Loss"}>
+
           Weight-Loss
           <br></br>
           {/* {showPopup && <h6>This diet is gears toward individuals are looking to lose some belly fat. This assumes the individual is meeting the daily reccomended 30 minutes of activies, if not more to ensure burning more calories than you consume. </h6>} */}
