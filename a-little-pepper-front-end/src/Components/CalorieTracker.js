@@ -40,7 +40,7 @@ export default function CalorieTracker({profile}) {
         <h2>Tracker</h2>
         <Row className="justify-content-center g-2">
           <ProgressBar
-            style={{ width: "51%" }}
+            style={{ width: "51%"}}
             striped
             animated
             variant="success"
@@ -78,13 +78,13 @@ export default function CalorieTracker({profile}) {
         className="mt-4 d-flex align-items-center justify-content-center"
         style={{ gap: ".5rem" }}
       >
-        <Button variant="light" onClick={handleDiet} value={"Average"}>
+        <Button variant="outline-dark" onClick={handleDiet} value={"Average"}>
           Average
         </Button>
-        <Button variant="light" onClick={handleDiet} value={"Athlete"}>
+        <Button variant="outline-dark" onClick={handleDiet} value={"Athlete"}>
           Athlete
         </Button>
-        <Button variant="light" onClick={handleDiet} value={"Weight-Loss"}>
+        <Button variant="outline-dark" onClick={handleDiet} value={"Weight-Loss"}>
           Weight-Loss
         </Button>
       </div>

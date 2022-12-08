@@ -56,7 +56,7 @@ export default function Profile() {
           <article className="mb-5">
             <CalorieTracker profile={profile} />
           </article>
-          <h2>Tracked Nutrition</h2>
+          <h2 style={{color:"#FB8F00"}}>Tracked Nutrition</h2>
           <div>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Card
