@@ -61,7 +61,7 @@ export default function Profile() {
           <article className="mb-5">
             <CalorieTracker profile={profile} totCal={totCal} setTotCal={setTotCal} totFat={totFat} setTotFat={setTotFat} totCarb={totCarb} setTotCarb={setTotCarb} totProtein={totProtein} setTotProtein={setTotProtein} />
           </article>
-          <h2 style={{color:"#FB8F00"}}>Tracked Nutrition</h2>
+          <h2 style={{ color: "#FB8F00" }}>Tracked Nutrition</h2>
           <div>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Card
@@ -96,18 +96,22 @@ export default function Profile() {
                 Sign Out
               </Button>
             </div>
-            <section className="my-5">
-              <h2>Bookmarked Recipes</h2>
-              <Row xs={1} md={2} lg={3} className="g-5 py-5">
-                {savedRecipes.map((recipe) => {
-                  return (
-                    <>
-                      <RecipeCard recipe={recipe} />
-                    </>
-                  );
-                })}
-              </Row>
-            </section>
+            {profile.recipes.length > 0 ? (
+              <section className="my-5 mx-5">
+                <h2>Bookmarked Recipes</h2>
+                <Row xs={1} md={2} lg={3} className="g-5 py-5">
+                  {savedRecipes.map((recipe) => {
+                    return (
+                      <>
+                        <RecipeCard recipe={recipe} />
+                      </>
+                    );
+                  })}
+                </Row>
+              </section>
+            ) : (
+              <></>
+            )}
           </div>
         </>
       ) : (

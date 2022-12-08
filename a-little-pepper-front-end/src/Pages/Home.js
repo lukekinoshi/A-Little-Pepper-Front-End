@@ -2,6 +2,8 @@ import { Row, Form, Button } from "react-bootstrap";
 import pepper from "../Assets/chili-pepper.png";
 import { useState } from "react";
 import axios from "axios";
+import About from '../Components/About'
+import padThai from "../Assets/pad-thai.png";
 // import { useNavigate } from "react-router-dom";
 
 import Recipe from "../Components/Recipe";
@@ -37,6 +39,7 @@ export default function Homepage() {
 
   return (
     <div className="my-5">
+      <img src={padThai} width="50%" />
       <h2>Search for a recipe</h2>
       <Form onSubmit={handleSubmit}>
         <div className="row">
@@ -108,7 +111,7 @@ export default function Homepage() {
           })}
         </Row>
       </article>
-      <section></section>
+      <About/>
     </div>
   );
 }

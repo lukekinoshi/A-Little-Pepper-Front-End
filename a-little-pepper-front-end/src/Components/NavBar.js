@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import logo from "../Assets/logo.png";
+import logo from "../Assets/logo-white.png";
 import { UserAuth } from "../Context/AuthContext";
 
 export default function NavBar() {
