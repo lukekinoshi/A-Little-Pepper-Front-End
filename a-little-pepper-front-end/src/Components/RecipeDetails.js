@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { Col, Card } from "react-bootstrap";
+import { Col, Row, Container, Card } from "react-bootstrap";
 import { UserAuth } from "../Context/AuthContext";
 import axios from "axios";
+import image1 from "../Assets/logo.png";
 
 const ACCESS_POINT = process.env.REACT_APP_ACCESS_POINT;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -131,83 +132,96 @@ export default function RecipeDetails() {
   console.log(calorie)
 
   return (
-    <article className="RecipeDetails">
-      <h6>User:{profile.name}</h6>
-      <h1>Nutritional Information</h1>
-      <br></br>
-      <br></br>
-      <span>
-        <h3>Calorie: {makeNum(calorie)} calories</h3>
-        <h6>*Note:
-          To ease calculations, energy is expressed in 1000-calorie units known as kilocalories. That is, 1 Calorie is equivalent to 1 kilocalorie; the capital C in Calories denotes kcal on food labels, calories and kilocalories are used interchangeably to mean the same thing. For example: 1kcal = 1 calorie. </h6>
-        <h3>Fat: {(nutrition.fat)}</h3>
-        <h3>Carbohydrates: {(nutrition.carbs)}</h3>
-        <h3>Protein: {(nutrition.protein)}</h3>
-      </span>
-      <br></br>
-      <br></br>
-      <h1>Ingredients</h1>
-      <article>
-        {ingredient &&
-          ingredient.map((item) => {
-            return (
-              <Card
-                bg="warning"
-                variant="light"
-                style={{ alignItems: "center" }}
-              >
-                <Card.Title>
-                  {item.amount.us.value} {item.amount.us.unit} of {item.name}{" "}
-                </Card.Title>
-              </Card>
-            );
-          })}
-      </article>
-      <br></br>
-      <br></br>
-      <h1>Ingredients Price Breakdown</h1>
-      <article>
-        {price &&
-          price.map((item) => {
-            return (
-              <Card
-                bg="warning"
-                variant="light"
-                style={{ alignItems: "center" }}
-              >
-                <Card.Title>
+    <Container className="py-3">
+    <h6>Hello {profile.name}!</h6>
+    <Row>
+      <Col>
+        <p>Recipe ID:{id}</p>
+        <img src={image1} width="250px" height="250px" />
+      </Col>
+      <Col>
+        <h2>Recipe Name</h2>
+        <h4 style={{ color: "#FB8F00" }}>Nutritional Information</h4>
+        <section>
+          <p>Calorie: {makeNum(calorie)} calories</p>
+          {/* <h6>*Note:
+        To ease calculations, energy is expressed in 1000-calorie units known as kilocalories. That is, 1 Calorie is equivalent to 1 kilocalorie; the capital C in Calories denotes kcal on food labels, calories and kilocalories are used interchangeably to mean the same thing. For example: 1kcal = 1 calorie. </h6> */}
+          <p>Fat: {nutrition.fat}</p>
+          <p>Carbohydrates: {nutrition.carbs}</p>
+          <p>Protein: {nutrition.protein}</p>
+        </section>
+        {profile.id ? (
+          <div
+            className="d-flex align-items-center justify-content-center"
+            style={{ gap: ".5rem" }}
+          >
+            <Button variant="outline-danger" onClick={handleTrack}>
+              Track
+            </Button>
+            <Button variant="outline-dark" onClick={handleBookmark}>
+              Bookmark
+            </Button>
+          </div>
+        ) : (
+          <></>
+        )}
+      </Col>
+    </Row>
+    <Row className="py-5">
+      <Col>
+      <h3 style={{ color: "#FB8F00" }}>Ingredients</h3>
+        <article>
+          {ingredient &&
+            ingredient.map((item) => {
+              return (
+                <Card
+                  variant="light"
+                  style={{ alignItems: "center" }}
+                >
+                  <Card.Text>
+                    {item.amount.us.value} {item.amount.us.unit} of{" "}
+                    {item.name}{" "}
+                  </Card.Text>
+                </Card>
+              );
+            })}
+        </article>
+      </Col>
+      <Col>
+        <h3 style={{ color: "#FB8F00" }}>Ingredients Price Breakdown</h3>
+        <article>
+          {price &&
+            price.map((item) => {
+              return (
+                <Card
+                  variant="light"
+                  style={{ alignItems: "center" }}
+                >
+                  <Card.Text>
                   {item.amount.us.value} {item.amount.us.unit} {item.name} : ${Math.round(10 * item.price) / 1000}{" "}
-                </Card.Title>
-              </Card>
-            );
-          })}
-        <h2>Total Cost: ${Math.round(10 * priceSum) / 1000}</h2>
-        <h6>per serving</h6>
-      </article>
-      <br></br>
-      <br></br>
-      <h1>Instructions</h1>
-      <article>
-        {instructions && instructions.map((instruction) => {
+                  </Card.Text>
+                </Card>
+              );
+            })}
+          <h6>Total Cost: ${Math.round(10 * priceSum) / 100}</h6>
+        </article>
+      </Col>
+    </Row>
+    <h3 style={{ color: "#FB8F00" }}>Instructions</h3>
+    <article>
+      {instructions &&
+        instructions.map((instruction) => {
           return (
-            <Card bg="warning" variant="light" style={{ alignItems: "center" }}>
-              <Card.Title>Step {instruction.number}: {instruction.step}</Card.Title>
+            <Card
+              variant="light"
+            >
+              <Card.Text>
+                Step {instruction.number}: {instruction.step}
+              </Card.Text>
             </Card>
-          )
+          );
         })}
-      </article>
-      <br></br>
-      {profile.id ? (<div
-        className="d-flex align-items-center justify-content-center"
-        style={{ gap: ".5rem" }}
-      >
-        <Button variant="light" onClick={handleTrack}>
-          Track
-        </Button>
-        <Button variant="light" onClick={handleBookmark}>
-          Bookmark
-        </Button>
-      </div>) : <></>}
     </article>
+  </Container>
   );
 }
