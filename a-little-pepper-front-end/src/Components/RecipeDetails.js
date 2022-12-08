@@ -133,7 +133,7 @@ export default function RecipeDetails() {
           <h2>Recipe Name</h2>
           <h4 style={{ color: "#FB8F00" }}>Nutritional Information</h4>
           <section>
-            <p>Calorie: {nutrition.calories}cal</p>
+            <p>Calorie: {makeNum(calorie)} calories</p>
             {/* <h6>*Note:
           To ease calculations, energy is expressed in 1000-calorie units known as kilocalories. That is, 1 Calorie is equivalent to 1 kilocalorie; the capital C in Calories denotes kcal on food labels, calories and kilocalories are used interchangeably to mean the same thing. For example: 1kcal = 1 calorie. </h6> */}
             <p>Fat: {nutrition.fat}</p>
@@ -188,7 +188,7 @@ export default function RecipeDetails() {
                     style={{ alignItems: "center" }}
                   >
                     <Card.Text>
-                      {item.name} : ${Math.round(10 * item.price) / 100}{" "}
+                    {item.amount.us.value} {item.amount.us.unit} {item.name} : ${Math.round(10 * item.price) / 1000}{" "}
                     </Card.Text>
                   </Card>
                 );
