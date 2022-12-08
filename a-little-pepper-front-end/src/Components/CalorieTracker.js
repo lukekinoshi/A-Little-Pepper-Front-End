@@ -42,7 +42,7 @@ export default function CalorieTracker({profile}) {
         <h2>Tracker</h2>
         <Row className="justify-content-center g-2">
           <ProgressBar
-            style={{ width: "51%" }}
+            style={{ width: "51%"}}
             striped
             animated
             variant="success"
