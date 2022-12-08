@@ -14,6 +14,11 @@ export default function Profile() {
   const API = process.env.REACT_APP_API_URL;
   const [create, setCreate] = useState(false);
 
+  const [totCal, setTotCal] = useState(2000);
+  const [totFat, setTotFat] = useState(55.56);
+  const [totCarb, setTotCarb] = useState(250);
+  const [totProtein, setTotProtein] = useState(125);
+
   useEffect(() => {
     if (!profile.id) {
       axios.get(`${API}/profiles/${user.uid}`).then((response) => {
@@ -54,7 +59,7 @@ export default function Profile() {
       {profile.id ? (
         <>
           <article className="mb-5">
-            <CalorieTracker profile={profile} />
+            <CalorieTracker profile={profile} totCal={totCal} setTotCal={setTotCal} totFat={totFat} setTotFat={setTotFat} totCarb={totCarb} setTotCarb={setTotCarb} totProtein={totProtein} setTotProtein={setTotProtein} />
           </article>
           <h2>Tracked Nutrition</h2>
           <div>
@@ -72,10 +77,10 @@ export default function Profile() {
                 {/* <h1>lol</h1> */}
                 <Card.Title className="mt-4">{user.displayName}</Card.Title>
                 <Card.Body>
-                  <Card.Text>Calories: {profile.cal}kcal / 2000kcal</Card.Text>
-                  <Card.Text>Fat: {profile.fat}g / 55.56g</Card.Text>
-                  <Card.Text>Carbs: {profile.carb}g / 255g</Card.Text>
-                  <Card.Text>Protein: {profile.protein}g / 125g</Card.Text>
+                  <Card.Text>Calories: {profile.cal}kcal / {totCal}kcal</Card.Text>
+                  <Card.Text>Fat: {profile.fat}g / {totFat}g</Card.Text>
+                  <Card.Text>Carbs: {profile.carb}g / {totCarb}g</Card.Text>
+                  <Card.Text>Protein: {profile.protein}g / {totProtein}g</Card.Text>
                 </Card.Body>
                 <Card.Footer>
                   Note: These are reccomended values for an average person.
