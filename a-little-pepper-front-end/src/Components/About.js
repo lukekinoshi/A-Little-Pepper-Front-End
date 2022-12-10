@@ -7,7 +7,7 @@ import image5 from "../Assets/image5.jpg"
 
 function About() {
   return (
-    <Container>
+    <Container className="my-5">
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
         <h1>What is a Little Pepper?</h1>
