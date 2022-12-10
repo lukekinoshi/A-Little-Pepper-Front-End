@@ -19,12 +19,21 @@ export default function RecipeDetails() {
   const [instructions, setInstructions] = useState([]);
   const [prices, setPrices] = useState([]);
   const [calorie, setCalorie] = useState('')
+  const [recipe, setRecipe] = useState([]);
 
   let { id } = useParams();
   const { user } = UserAuth();
   const [profile, setProfile] = useState([]);
 
   useEffect(() => {
+    axios
+    .get(
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=9ab6abef58ff4088ab12f31009f1a8a9`
+    ).then((res) => {
+      setRecipe(res.data);
+    })
+    .catch((error) => console.error(error));
+
     axios
       .get(`${ACCESS_POINT}/${id}/nutritionWidget.json?apiKey=${API_KEY}`)
       .then((res) => {
@@ -135,20 +144,18 @@ export default function RecipeDetails() {
   console.log(calorie)
 
   return (
-    <Container className="py-3">
+    <Container className="py-4">
     <h6>Hello {profile.name}!</h6>
-    <Row>
+    <Row className="py-3">
       <Col>
         <p>Recipe ID:{id}</p>
-        <img src={image1} width="250px" height="250px" />
+        <img src={recipe.image} width="400px"/>
       </Col>
       <Col>
-        <h2>Recipe Name</h2>
+        <h2>{recipe.title}</h2>
         <h4 style={{ color: "#FB8F00" }}>Nutritional Information</h4>
         <section>
           <p>Calorie: {makeNum(calorie)} calories</p>
-          {/* <h6>*Note:
-        To ease calculations, energy is expressed in 1000-calorie units known as kilocalories. That is, 1 Calorie is equivalent to 1 kilocalorie; the capital C in Calories denotes kcal on food labels, calories and kilocalories are used interchangeably to mean the same thing. For example: 1kcal = 1 calorie. </h6> */}
           <p>Fat: {nutrition.fat}</p>
           <p>Carbohydrates: {nutrition.carbs}</p>
           <p>Protein: {nutrition.protein}</p>
