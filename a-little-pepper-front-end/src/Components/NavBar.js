@@ -20,7 +20,7 @@ export default function NavBar() {
               Button will change from Sign in to Username  */}
               {user ? (
                 <Nav.Link as={Link} to="/profile">
-                  <Button variant="light">Profile</Button>
+                  <Button variant="light" size="lg">Profile</Button>
                 </Nav.Link>
               ) : (
                 <Nav.Link as={Link} to="/signin">
