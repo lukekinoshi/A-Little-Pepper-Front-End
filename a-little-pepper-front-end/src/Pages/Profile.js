@@ -100,12 +100,7 @@ export default function Profile() {
               >
                 <Card.Img
                   variant="top"
-                // src={profile.picture}
-                // style={{ width: "300px" ,borderRadius: "50%"}}
                 />
-
-                {/* <h1>lol</h1> */}
-
                 <Card.Title className="mt-4">{user.displayName}</Card.Title>
                 <Card.Body>
                   <Card.Text>Calories: {profile.cal}kcal / {totCal}kcal</Card.Text>
