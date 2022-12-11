@@ -87,7 +87,7 @@ export default function Profile() {
             <Button className="mx-2" variant="warning" onClick={handleShow}>
         Add To Tracker
       </Button>
-      <Button className="mx-2" variant="danger" onClick={handleReset}>Reset Tracker</Button>
+      <Button className="mx-2" variant="danger" style={{background:"#f90f0d"}} onClick={handleReset}>Reset Tracker</Button>
           </article>
           <CalorieModal show={show} setShow={setShow} profile={profile}/>
 
@@ -101,7 +101,7 @@ export default function Profile() {
                 <Card.Img
                   variant="top"
                 />
-                <Card.Title className="mt-4"><h3>{user.displayName}</h3></Card.Title>
+                <Card.Title className="mt-4" style={{color:"#f90f0d"}}><h3>{user.displayName}</h3></Card.Title>
                 <Card.Body>
                   <Card.Text><h4>Calories: {profile.cal}kcal / {totCal}kcal
                     </h4></Card.Text>
@@ -120,7 +120,7 @@ export default function Profile() {
               className="d-flex align-items-center justify-content-center"
               style={{ gap: ".5rem" }}
             >
-              <Button variant="danger" onClick={handleSignOut}>
+              <Button variant="danger" style={{background:"#f90f0d"}} onClick={handleSignOut}>
                 Sign Out
               </Button>
             </div>

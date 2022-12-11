@@ -9,9 +9,9 @@ export default function NavBar() {
   return (
     <div >
       <Navbar expand="lg" bg="" variant="light" style={{ borderBottom: "1px solid #F8C771", background:"#fd976c"}}>
-        <Container >
+        <Container>
           <Nav.Link as={Link} to="/" style={{ color: "white" }}>
-            <img src={logo} width="85" height="85"  />
+            <img src={logo} width="100" height="100"  />
           </Nav.Link>
             <Nav className="ms-auto">
               {user ? (

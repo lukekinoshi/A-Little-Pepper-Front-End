@@ -37,8 +37,8 @@ export default function Homepage() {
   return (
     <div className="my-5">
       <div>
-        <img src={padThai} width="50%" />
-        <h2 className="mt-4">Search for a recipe</h2>
+        <img src={padThai} width="30%" />
+        <h1 className="mt-4">Search for a recipe</h1>
         <Form onSubmit={handleSubmit}>
           <div className="row">
             <main
@@ -48,7 +48,9 @@ export default function Homepage() {
               <div className="content mx-auto">
                 <Row className="g-6">
                   <Form.Label>
+                    <h5>
                     Enter your ingredients seperated by commas
+                    </h5>
                   </Form.Label>
                   <Form.Control
                     className="mb-3"

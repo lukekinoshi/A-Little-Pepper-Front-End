@@ -74,7 +74,7 @@ export default function CalorieTracker({
         <h2>Tracker</h2>
         <Row className="justify-content-center g-2">
           <ProgressBar
-            style={{ width: "51%" }}
+            style={{ width: "51%", height:"30px", fontSize: "20px"}}
             striped
             animated
             variant="success"
@@ -82,7 +82,7 @@ export default function CalorieTracker({
             label={`Calories`}
           />
           <ProgressBar
-            style={{ width: "51%" }}
+            style={{ width: "51%", height:"30px", fontSize: "20px" }}
             striped
             animated
             variant="info"
@@ -90,7 +90,7 @@ export default function CalorieTracker({
             label={`Fat`}
           />
           <ProgressBar
-            style={{ width: "51%" }}
+            style={{ width: "51%", height:"30px", fontSize: "20px" }}
             striped
             animated
             variant="warning"
@@ -98,7 +98,7 @@ export default function CalorieTracker({
             label={`Carbs`}
           />
           <ProgressBar
-            style={{ width: "51%" }}
+            style={{ width: "51%", height:"30px", fontSize: "20px" }}
             striped
             animated
             variant="danger"
@@ -132,8 +132,8 @@ export default function CalorieTracker({
           </Button>
         </div>
         <Container className= "mt-3" style={{maxWidth:"700px"}}>
-          <h6>Current Diet: {diet}</h6>
-          <h6>{dietInfo}</h6>
+          <h4 style={{color:"#FB8F00"}}>Current Diet: {diet}</h4>
+          <h5>{dietInfo}</h5>
         </Container>
       </div>
     </div>
