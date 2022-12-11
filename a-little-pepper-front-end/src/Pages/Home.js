@@ -24,7 +24,6 @@ export default function Homepage() {
       .catch((error) => console.error(error));
   };
 
-  // const name = searchRecipe.name
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,24 +59,6 @@ export default function Homepage() {
                     placeholder="example: chicken,flour,salt"
                     required
                   />
-                  {/* <Form.Label>Ingredient 2</Form.Label>
-                                <Form.Control
-                                    className="mb-3"
-                                    size="md"
-                                    type="text"
-                                    onChange={(e) => setInput2(e.target.value)}
-                                    value={input2}
-                                />
-                                <Form.Label>Ingredient 3</Form.Label>
-                                <Form.Control
-                                    className="mb-3"
-                                    size="md"
-                                    type="text"
-                                    onChange={(e) => setInput3(e.target.value)}
-                                    value={input3}
-
-                                /> */}
-
                   <div>
                     <Button
                       type="submit"

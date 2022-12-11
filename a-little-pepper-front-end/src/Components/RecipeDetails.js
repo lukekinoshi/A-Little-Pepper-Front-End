@@ -125,7 +125,6 @@ export default function RecipeDetails() {
 
   let ingredient = ingredients.ingredients;
   let price = prices;
-  // let calorie = makeNum(nutrition.calories);
 
   let priceSum = 0;
   let priceArr = price.map((item) => Number(item.price));
