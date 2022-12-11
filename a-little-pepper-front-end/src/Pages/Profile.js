@@ -28,6 +28,22 @@ export default function Profile() {
     }
   }, [create, user]);
 
+  const createProfile = () => {
+    axios.post(`${API}/profiles`, {
+      uid: user.uid,
+      name: user.displayName,
+      cal: 0,
+      fat: 0,
+      carb: 0,
+      protein: 0,
+      recipes: [],
+    })
+      .then(() => {
+        setCreate(!create);
+        console.log("post sent");
+      });
+  };
+
   const handleSignOut = async () => {
     try {
       await logOut();
@@ -37,22 +53,26 @@ export default function Profile() {
     }
   };
 
-  const createProfile = () => {
+  const resetTracker = () => {
     axios
-      .post(`${API}/profiles`, {
+      .put(`${API}/profiles/${user.uid}`, {
         uid: user.uid,
         name: user.displayName,
         cal: 0,
         fat: 0,
         carb: 0,
         protein: 0,
-        recipes: [],
+        recipes: savedRecipes,
       })
       .then(() => {
-        setCreate(!create);
-        console.log("post sent");
+        console.log("update sent");
       });
   };
+
+  const handleReset = () => {
+    resetTracker();
+    window.location.reload();
+  }
 
   return (
     <div className="my-5" style={{ color: "black" }}>
@@ -60,6 +80,8 @@ export default function Profile() {
         <>
           <article className="mb-5">
             <CalorieTracker profile={profile} totCal={totCal} setTotCal={setTotCal} totFat={totFat} setTotFat={setTotFat} totCarb={totCarb} setTotCarb={setTotCarb} totProtein={totProtein} setTotProtein={setTotProtein} />
+            <br></br>
+            <Button onClick={handleReset}>Reset Tracker</Button>
           </article>
           <h2 style={{ color: "#FB8F00" }}>Tracked Nutrition</h2>
           <div>
@@ -70,8 +92,8 @@ export default function Profile() {
               >
                 <Card.Img
                   variant="top"
-                  // src={profile.picture}
-                  // style={{ width: "300px" ,borderRadius: "50%"}}
+                // src={profile.picture}
+                // style={{ width: "300px" ,borderRadius: "50%"}}
                 />
 
                 {/* <h1>lol</h1> */}
@@ -86,6 +108,7 @@ export default function Profile() {
                   Note: These are reccomended values for an average person.
                   Values may differ based on weight, height, and/or lifestyle.{" "}
                 </Card.Footer>
+                <br></br>
               </Card>
             </div>
             <div
