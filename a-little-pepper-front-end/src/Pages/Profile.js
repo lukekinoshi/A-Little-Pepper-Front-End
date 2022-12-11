@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Card, Button, Row } from "react-bootstrap";
 import CalorieTracker from "../Components/CalorieTracker";
 import RecipeCard from "../Components/RecipeCard";
+import CalorieModal from "../Components/CalorieModal";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function Profile() {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const API = process.env.REACT_APP_API_URL;
   const [create, setCreate] = useState(false);
-
+  const [show, setShow] = useState(false);
   const [totCal, setTotCal] = useState(2000);
   const [totFat, setTotFat] = useState(55.56);
   const [totCarb, setTotCarb] = useState(250);
@@ -26,7 +27,9 @@ export default function Profile() {
         setSavedRecipes(response.data.recipes);
       });
     }
-  }, [create, user]);
+  }, [create, user, show]);
+
+  const handleShow = () => setShow(true);
 
   const handleSignOut = async () => {
     try {
@@ -61,6 +64,10 @@ export default function Profile() {
           <article className="mb-5">
             <CalorieTracker profile={profile} totCal={totCal} setTotCal={setTotCal} totFat={totFat} setTotFat={setTotFat} totCarb={totCarb} setTotCarb={setTotCarb} totProtein={totProtein} setTotProtein={setTotProtein} />
           </article>
+          <CalorieModal show={show} setShow={setShow} profile={profile}/>
+          <Button variant="primary" onClick={handleShow}>
+        Add To Tracker
+      </Button>
           <h2 style={{ color: "#FB8F00" }}>Tracked Nutrition</h2>
           <div>
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -68,13 +75,6 @@ export default function Profile() {
                 className="my-3"
                 style={{ width: "350px", alignItems: "center" }}
               >
-                <Card.Img
-                  variant="top"
-                  // src={profile.picture}
-                  // style={{ width: "300px" ,borderRadius: "50%"}}
-                />
-
-                {/* <h1>lol</h1> */}
                 <Card.Title className="mt-4">{user.displayName}</Card.Title>
                 <Card.Body>
                   <Card.Text>Calories: {profile.cal}kcal / {totCal}kcal</Card.Text>
