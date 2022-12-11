@@ -213,7 +213,7 @@ export default function RecipeDetails() {
                 </Card>
               );
             })}
-          <h6>Total Cost: ${Math.round(10 * priceSum) / 100}</h6>
+          <h6>Total Cost: ${Math.round(10 * priceSum) / 1000}</h6>
         </article>
       </Col>
     </Row>
