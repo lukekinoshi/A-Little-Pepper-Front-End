@@ -96,17 +96,18 @@ export default function Profile() {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Card
                 className="my-3"
-                style={{ width: "350px", alignItems: "center" }}
+                style={{ width: "400px", alignItems: "center" }}
               >
                 <Card.Img
                   variant="top"
                 />
-                <Card.Title className="mt-4">{user.displayName}</Card.Title>
+                <Card.Title className="mt-4"><h3>{user.displayName}</h3></Card.Title>
                 <Card.Body>
-                  <Card.Text>Calories: {profile.cal}kcal / {totCal}kcal</Card.Text>
-                  <Card.Text>Fat: {profile.fat}g / {totFat}g</Card.Text>
-                  <Card.Text>Carbs: {profile.carb}g / {totCarb}g</Card.Text>
-                  <Card.Text>Protein: {profile.protein}g / {totProtein}g</Card.Text>
+                  <Card.Text><h4>Calories: {profile.cal}kcal / {totCal}kcal
+                    </h4></Card.Text>
+                  <Card.Text><h4>Fat: {profile.fat}g / {totFat}g</h4></Card.Text>
+                  <Card.Text><h4>Carbs: {profile.carb}g / {totCarb}g</h4></Card.Text>
+                  <Card.Text><h4>Protein: {profile.protein}g / {totProtein}g</h4></Card.Text>
                 </Card.Body>
                 <Card.Footer>
                   Note: These are reccomended values for an average person.

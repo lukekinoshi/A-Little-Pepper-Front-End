@@ -141,9 +141,9 @@ export default function RecipeDetails() {
       <Row className="py-3">
         <Col>
           <p>Recipe ID:{id}</p>
-          <img src={recipe.image} width="400px" alt={recipe.name} />
+          <img src={recipe.image} width="500px" alt={recipe.name} />
         </Col>
-        <Col>
+        <Col className="mt-5">
           <h2>{recipe.title}</h2>
           <h4 style={{ color: "#FB8F00" }}>Nutritional Information</h4>
           <section>
@@ -157,10 +157,10 @@ export default function RecipeDetails() {
               className="d-flex align-items-center justify-content-center"
               style={{ gap: ".5rem" }}
             >
-              <Button variant="outline-danger" onClick={handleTrack}>
+              <Button size="lg" variant="outline-danger" onClick={handleTrack}>
                 Track
               </Button>
-              <Button variant="outline-dark" onClick={handleBookmark}>
+              <Button size="lg" variant="outline-dark" onClick={handleBookmark}>
                 Bookmark
               </Button>
             </div>
@@ -171,58 +171,65 @@ export default function RecipeDetails() {
       </Row>
       <Row className="py-5">
         <Col>
-          <h3 style={{ color: "#FB8F00" }}>Ingredients</h3>
           <article>
+            <Card
+              variant="light"
+              style={{ alignItems: "center" }}
+            >
+              <Card.Title>
+                <h3 style={{ color: "#FB8F00" }}>
+                Ingredients
+                  </h3></Card.Title>
             {ingredient &&
               ingredient.map((item) => {
                 return (
-                  <Card
-                    variant="light"
-                    style={{ alignItems: "center" }}
-                  >
                     <Card.Text>
                       {item.amount.us.value} {item.amount.us.unit} of{" "}
                       {item.name}{" "}
                     </Card.Text>
-                  </Card>
                 );
               })}
+              </Card>
           </article>
         </Col>
         <Col>
-          <h3 style={{ color: "#FB8F00" }}>Ingredients Price Breakdown</h3>
           <article>
+            <Card
+              variant="light"
+              style={{ alignItems: "center" }}
+            >
+              <Card.Title>
+          <h3 style={{ color: "#FB8F00" }}>Ingredients Price Breakdown</h3>
+          </Card.Title>
             {price &&
               price.map((item) => {
                 return (
-                  <Card
-                    variant="light"
-                    style={{ alignItems: "center" }}
-                  >
                     <Card.Text>
                       {item.amount.us.value} {item.amount.us.unit} {item.name} : ${Math.round(10 * item.price) / 1000}{" "}
                     </Card.Text>
-                  </Card>
                 );
               })}
-            <h6>Total Cost: ${Math.round(10 * priceSum) / 1000}</h6>
+            <h3 style={{color: "#FB8F00"}}>Total Cost: ${Math.round(10 * priceSum) / 1000}</h3>
+              </Card>
           </article>
         </Col>
       </Row>
-      <h3 style={{ color: "#FB8F00" }}>Instructions</h3>
+  
       <article>
+        <Card
+          variant="light"
+        > <Card.Title>
+          <h3 style={{ color: "#FB8F00" }}>Instructions</h3>
+        </Card.Title>
         {instructions &&
           instructions.map((instruction) => {
             return (
-              <Card
-                variant="light"
-              >
                 <Card.Text>
                   Step {instruction.number}: {instruction.step}
                 </Card.Text>
-              </Card>
             );
           })}
+          </Card>
       </article>
     </Container>
 

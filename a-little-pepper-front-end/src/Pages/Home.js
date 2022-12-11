@@ -62,7 +62,7 @@ export default function Homepage() {
                   <div>
                     <Button
                       type="submit"
-                      style={{ maxWidth: "250px" }}
+                      style={{ maxWidth: "250px", background:"#f90f0d"}}
                       variant="danger"
                       size="lg"
                     >
@@ -82,7 +82,7 @@ export default function Homepage() {
         </Form>
       </div>
       <article>
-        <Row xs={1} md={2} lg={3} className="g-5 py-5">
+        <Row xs={1} md={2} lg={3} className="g-5 py-5 mx-auto">
           {recipes.map((recipe) => {
             return (
               <>

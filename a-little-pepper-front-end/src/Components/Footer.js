@@ -11,7 +11,7 @@ import {
 
 function Footer() {
   return (
-    <div style={{ background: "#F8C771" }}>
+    <div style={{ background: "#fd976c" }}>
       <Container>
         <Row className="d-flex align-items-center justify-content-around" xs={1} md={3} lg={3}>
           <Col className="d-flex align-items-center justify-content-beggining py-3">
