@@ -84,12 +84,13 @@ export default function Profile() {
           <article className="mb-5">
             <CalorieTracker profile={profile} totCal={totCal} setTotCal={setTotCal} totFat={totFat} setTotFat={setTotFat} totCarb={totCarb} setTotCarb={setTotCarb} totProtein={totProtein} setTotProtein={setTotProtein} />
             <br></br>
-            <Button onClick={handleReset}>Reset Tracker</Button>
-          </article>
-          <CalorieModal show={show} setShow={setShow} profile={profile}/>
-          <Button variant="primary" onClick={handleShow}>
+            <Button className="mx-2" variant="warning" onClick={handleShow}>
         Add To Tracker
       </Button>
+      <Button className="mx-2" variant="danger" onClick={handleReset}>Reset Tracker</Button>
+          </article>
+          <CalorieModal show={show} setShow={setShow} profile={profile}/>
+
           <h2 style={{ color: "#FB8F00" }}>Tracked Nutrition</h2>
           <div>
             <div style={{ display: "flex", justifyContent: "center" }}>

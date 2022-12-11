@@ -94,19 +94,19 @@ export default function CalorieTracker({ profile, totCal, setTotCal, totFat, set
           className="mt-4 d-flex align-items-center justify-content-center"
           style={{ gap: ".5rem" }}
         >
-          <Button variant="light" onClick={handleDiet} value={"Average"}>
+          <Button variant="outline-dark" onClick={handleDiet} value={"Average"}>
             Average
           </Button>
 
-          <Button variant="light" onClick={handleDiet} value={"Athlete"}>
+          <Button variant="outline-dark" onClick={handleDiet} value={"Athlete"}>
             Athlete
           </Button>
 
-          <Button variant="light" onClick={handleDiet} value={"Weight-Loss"}>
+          <Button variant="outline-dark" onClick={handleDiet} value={"Weight-Loss"}>
             Weight-Loss
           </Button>
 
-          <Button variant="light" onClick={handleDiet} value={"Keto"}>
+          <Button variant="outline-dark" onClick={handleDiet} value={"Keto"}>
             Keto
           </Button>
 
