@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 import logo from "../Assets/pepper-black.png";
 import twitter from "../Assets/twitter.png";
 import instagram from "../Assets/instagram.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
   return (
