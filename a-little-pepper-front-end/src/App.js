@@ -7,7 +7,7 @@ import Home from "./Pages/Home";
 import SignIn from "./Components/SignIn";
 import Protected from "./Components/Protected";
 import RecipeDetails from "./Components/RecipeDetails";
-
+import Footer from "./Components/Footer";
 import Profile from "./Pages/Profile";
 
 
@@ -24,6 +24,7 @@ function App() {
             <Route path="/profile" element={<Protected><Profile/></Protected>} />
             <Route path="/recipe/:id" element={<RecipeDetails />} />
           </Routes>
+          <Footer />
         </AuthContextProvider>
       </Router>
     </div>
