@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
-import { Col, Row, Container, Card } from "react-bootstrap";
+import { Col, Row, Container, Card, Button} from "react-bootstrap";
 import { UserAuth } from "../Context/AuthContext";
 import axios from "axios";
 import image1 from "../Assets/logo.png";
+
 
 const ACCESS_POINT = process.env.REACT_APP_ACCESS_POINT;
 const API_KEY = process.env.REACT_APP_API_KEY;

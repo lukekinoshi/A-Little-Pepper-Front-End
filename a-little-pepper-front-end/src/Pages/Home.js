@@ -4,6 +4,10 @@ import { useState } from "react";
 import axios from "axios";
 import About from "../Components/About";
 import padThai from "../Assets/pad-thai.png";
+import dumpling from "../Assets/dumpling.png";
+import pho from "../Assets/pho.png";
+import peppers from "../Assets/peppers.png";
+
 // import { useNavigate } from "react-router-dom";
 
 import Recipe from "../Components/Recipe";
