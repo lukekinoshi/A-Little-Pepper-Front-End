@@ -20,8 +20,8 @@ function RecipeCard({ recipe }) {
 
   return (
     <div>
-      <Col className="overflow-hidden">
-        <Card variant="light" style={{ alignItems: "center", background: "#F8C771", width:"300px"}}>
+      <Col>
+        <Card variant="light" style={{ alignItems: "center", background: "#F8C771"}}>
           <Card.Img
             className="py-3"
             variant="top"
