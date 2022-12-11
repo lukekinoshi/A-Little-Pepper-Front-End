@@ -31,6 +31,22 @@ export default function Profile() {
 
   const handleShow = () => setShow(true);
 
+  const createProfile = () => {
+    axios.post(`${API}/profiles`, {
+      uid: user.uid,
+      name: user.displayName,
+      cal: 0,
+      fat: 0,
+      carb: 0,
+      protein: 0,
+      recipes: [],
+    })
+      .then(() => {
+        setCreate(!create);
+        console.log("post sent");
+      });
+  };
+
   const handleSignOut = async () => {
     try {
       await logOut();
@@ -40,22 +56,26 @@ export default function Profile() {
     }
   };
 
-  const createProfile = () => {
+  const resetTracker = () => {
     axios
-      .post(`${API}/profiles`, {
+      .put(`${API}/profiles/${user.uid}`, {
         uid: user.uid,
         name: user.displayName,
         cal: 0,
         fat: 0,
         carb: 0,
         protein: 0,
-        recipes: [],
+        recipes: savedRecipes,
       })
       .then(() => {
-        setCreate(!create);
-        console.log("post sent");
+        console.log("update sent");
       });
   };
+
+  const handleReset = () => {
+    resetTracker();
+    window.location.reload();
+  }
 
   return (
     <div className="my-5" style={{ color: "black" }}>
@@ -63,6 +83,8 @@ export default function Profile() {
         <>
           <article className="mb-5">
             <CalorieTracker profile={profile} totCal={totCal} setTotCal={setTotCal} totFat={totFat} setTotFat={setTotFat} totCarb={totCarb} setTotCarb={setTotCarb} totProtein={totProtein} setTotProtein={setTotProtein} />
+            <br></br>
+            <Button onClick={handleReset}>Reset Tracker</Button>
           </article>
           <CalorieModal show={show} setShow={setShow} profile={profile}/>
           <Button variant="primary" onClick={handleShow}>
@@ -75,6 +97,14 @@ export default function Profile() {
                 className="my-3"
                 style={{ width: "350px", alignItems: "center" }}
               >
+                <Card.Img
+                  variant="top"
+                // src={profile.picture}
+                // style={{ width: "300px" ,borderRadius: "50%"}}
+                />
+
+                {/* <h1>lol</h1> */}
+
                 <Card.Title className="mt-4">{user.displayName}</Card.Title>
                 <Card.Body>
                   <Card.Text>Calories: {profile.cal}kcal / {totCal}kcal</Card.Text>
@@ -86,6 +116,7 @@ export default function Profile() {
                   Note: These are reccomended values for an average person.
                   Values may differ based on weight, height, and/or lifestyle.{" "}
                 </Card.Footer>
+                <br></br>
               </Card>
             </div>
             <div
