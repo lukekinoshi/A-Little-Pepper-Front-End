@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { Button, Form, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-export default function CalorieTracker({ profile, totCal, setTotCal, totFat, setTotFat, totCarb, setTotCarb, totProtein, setTotProtein }) {
-
+export default function CalorieTracker({
+  profile,
+  totCal,
+  setTotCal,
+  totFat,
+  setTotFat,
+  totCarb,
+  setTotCarb,
+  totProtein,
+  setTotProtein,
+}) {
   const [recipes, setRecipes] = useState([]);
   const [diet, setDiet] = useState("Average");
-  const [dietInfo, setDietInfo] = useState('This is the default diet that most individuals follow with a balanced ratio of carbohydrates, fats, and protein. This is typically used when a person does not have any specific goals in mind as this is a perfect diet to maintain weight. This assumes that the individual spends the reccomended 30 mminutes of daily activies')
+  const [dietInfo, setDietInfo] = useState(
+    "This is the default diet that most individuals follow with a balanced ratio of carbohydrates, fats, and protein. This is typically used when a person does not have any specific goals in mind as this is a perfect diet to maintain weight. This assumes that the individual spends the reccomended 30 mminutes of daily activies"
+  );
 
   let calSum = 0;
   let calArr = recipes.map((recipe) => Number(recipe.cal));
@@ -19,37 +28,45 @@ export default function CalorieTracker({ profile, totCal, setTotCal, totFat, set
 
   useEffect(() => {
     // handleDiet()
-  }, [diet, dietInfo])
+  }, [diet, dietInfo]);
 
   const handleDiet = (e) => {
-    setDiet(e.target.value)
-    console.log(diet)
+    setDiet(e.target.value);
+    console.log(diet);
     if (diet === "Average") {
       setTotCal(2000);
       setTotFat(55.56);
       setTotCarb(275);
       setTotProtein(125);
-      setDietInfo('This is the default diet that most individuals follow with a balanced ratio of carbohydrates, fats, and protein. This is typically used when a person does not have any specific goals in mind as this is a perfect diet to maintain weight. This assumes that the individual spends the reccomended 30 mminutes of daily activies');
+      setDietInfo(
+        "This is the default diet that most individuals follow with a balanced ratio of carbohydrates, fats, and protein. This is typically used when a person does not have any specific goals in mind as this is a perfect diet to maintain weight. This assumes that the individual spends the reccomended 30 mminutes of daily activies"
+      );
     } else if (diet === "Athlete") {
       setTotCal(3000);
       setTotFat(83.33);
       setTotCarb(337);
       setTotProtein(225);
-      setDietInfo('An athlete diet is for individuals who are active exercising, this includes any type of dynamic movments or muscle-building. The main focus of this diet is high protein consumption to ensure healthy muscle building and enough carbohydrates to maintain energy for these activities.');
+      setDietInfo(
+        "An athlete diet is for individuals who are active exercising, this includes any type of dynamic movments or muscle-building. The main focus of this diet is high protein consumption to ensure healthy muscle building and enough carbohydrates to maintain energy for these activities."
+      );
     } else if (diet === "Weight-Loss") {
       setTotCal(1500);
       setTotFat(25);
       setTotCarb(187.5);
       setTotProtein(131.25);
-      setDietInfo('This diet is gears toward individuals are looking to lose some belly fat. This assumes the individual is meeting the daily reccomended 30 minutes of activies, if not more to ensure burning more calories than you consume.');
+      setDietInfo(
+        "This diet is gears toward individuals are looking to lose some belly fat. This assumes the individual is meeting the daily reccomended 30 minutes of activies, if not more to ensure burning more calories than you consume."
+      );
     } else if (diet === "Keto") {
       setTotCal(2000);
       setTotFat(155.56);
       setTotCarb(25);
       setTotProtein(125);
-      setDietInfo('A keto diet is unique as this diet is geared toward eliminating carbohydrates and high consumption of fat and protein. By eliminating carbohydrates from the diet, it forces your body to use fat for energy. This is a very good diet for weight-loss as now your body has a consistent fuel source from your fat reserves, which allows you to be less hungry, meaning less calories consumed. Note that when you start a keto diet, the initial weight loss is water weight.');
+      setDietInfo(
+        "A keto diet is unique as this diet is geared toward eliminating carbohydrates and high consumption of fat and protein. By eliminating carbohydrates from the diet, it forces your body to use fat for energy. This is a very good diet for weight-loss as now your body has a consistent fuel source from your fat reserves, which allows you to be less hungry, meaning less calories consumed. Note that when you start a keto diet, the initial weight loss is water weight."
+      );
     }
-  }
+  };
 
   return (
     <div>
@@ -61,7 +78,7 @@ export default function CalorieTracker({ profile, totCal, setTotCal, totFat, set
             striped
             animated
             variant="success"
-            now={profile.cal / totCal * 100}
+            now={(profile.cal / totCal) * 100}
             label={`Calories`}
           />
           <ProgressBar
@@ -69,7 +86,7 @@ export default function CalorieTracker({ profile, totCal, setTotCal, totFat, set
             striped
             animated
             variant="info"
-            now={profile.fat / totFat * 100}
+            now={(profile.fat / totFat) * 100}
             label={`Fat`}
           />
           <ProgressBar
@@ -77,7 +94,7 @@ export default function CalorieTracker({ profile, totCal, setTotCal, totFat, set
             striped
             animated
             variant="warning"
-            now={profile.carb / totCarb * 100}
+            now={(profile.carb / totCarb) * 100}
             label={`Carbs`}
           />
           <ProgressBar
@@ -85,7 +102,7 @@ export default function CalorieTracker({ profile, totCal, setTotCal, totFat, set
             striped
             animated
             variant="danger"
-            now={profile.protein / totProtein * 100}
+            now={(profile.protein / totProtein) * 100}
             label={`Protein`}
           />
         </Row>
@@ -102,18 +119,22 @@ export default function CalorieTracker({ profile, totCal, setTotCal, totFat, set
             Athlete
           </Button>
 
-          <Button variant="outline-dark" onClick={handleDiet} value={"Weight-Loss"}>
+          <Button
+            variant="outline-dark"
+            onClick={handleDiet}
+            value={"Weight-Loss"}
+          >
             Weight-Loss
           </Button>
 
           <Button variant="outline-dark" onClick={handleDiet} value={"Keto"}>
             Keto
           </Button>
-
         </div>
-        <br></br>
-        <h6>Current Diet: {diet}</h6>
-        <h6>{dietInfo}</h6>
+        <Container className= "mt-3" style={{maxWidth:"700px"}}>
+          <h6>Current Diet: {diet}</h6>
+          <h6>{dietInfo}</h6>
+        </Container>
       </div>
     </div>
   );
