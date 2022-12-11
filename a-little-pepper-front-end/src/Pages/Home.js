@@ -4,11 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import About from "../Components/About";
 import padThai from "../Assets/pad-thai.png";
-import dumpling from "../Assets/dumpling.png";
-import pho from "../Assets/pho.png";
-import peppers from "../Assets/peppers.png";
 
-// import { useNavigate } from "react-router-dom";
 
 import Recipe from "../Components/Recipe";
 
@@ -18,8 +14,6 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 export default function Homepage() {
   const [recipes, setRecipes] = useState([]);
   const [input1, setInput1] = useState("");
-
-  // const navigate = useNavigate();
 
   const getRecipes = () => {
     axios
@@ -87,7 +81,7 @@ export default function Homepage() {
                   <div>
                     <Button
                       type="submit"
-                      style={{ maxWidth: "200px" }}
+                      style={{ maxWidth: "250px" }}
                       variant="danger"
                       size="lg"
                     >

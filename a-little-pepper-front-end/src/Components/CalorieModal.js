@@ -87,12 +87,14 @@ function CalorieModal({ show, setShow, profile }) {
             value={newProfile.protein}
             onChange={handleTextChange}
           />
-          <Button variant="danger" onClick={handleClose}>
-            Close
-          </Button>
-          <Button type="submit" variant="warning">
+          <div className="d-flex align-items-center justify-content-around">
+          <Button type="submit" variant="success">
             Add
           </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          </div>
         </Form>
       </Modal.Body>
     </Modal>
