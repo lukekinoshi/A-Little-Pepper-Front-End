@@ -9,6 +9,7 @@ import Protected from "./Components/Protected";
 import RecipeDetails from "./Components/RecipeDetails";
 import Footer from "./Components/Footer";
 import Profile from "./Pages/Profile";
+import FourOFour from "./Components/FourOFour";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/profile" element={<Protected><Profile/></Protected>} />
             <Route path="/recipe/:id" element={<RecipeDetails />} />
+            <Route path="*" element={<FourOFour />} />
           </Routes>
           <Footer />
         </AuthContextProvider>
