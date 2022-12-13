@@ -205,11 +205,11 @@ export default function RecipeDetails() {
               price.map((item) => {
                 return (
                     <Card.Text>
-                      {item.amount.us.value} {item.amount.us.unit} {item.name} : ${Math.round(10 * item.price) / 1000}{" "}
+                      {item.amount.us.value} {item.amount.us.unit} {item.name} : ${(Math.round(10 * item.price) / 1000).toFixed(2)}{" "}
                     </Card.Text>
                 );
               })}
-            <h3 style={{color: "#FB8F00"}}>Total Cost: ${Math.round(10 * priceSum) / 1000}</h3>
+            <h3 style={{color: "#FB8F00"}}>Total Cost: ${(Math.round(10 * priceSum) / 1000).toFixed(2)}</h3>
               </Card>
           </article>
         </Col>
