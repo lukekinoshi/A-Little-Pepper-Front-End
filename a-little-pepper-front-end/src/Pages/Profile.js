@@ -8,11 +8,11 @@ import RecipeCard from "../Components/RecipeCard";
 import CalorieModal from "../Components/CalorieModal";
 
 export default function Profile() {
+  const API = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const { user, logOut } = UserAuth();
   const [profile, setProfile] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
-  const API = process.env.REACT_APP_API_URL;
   const [create, setCreate] = useState(false);
   const [show, setShow] = useState(false);
   const [totCal, setTotCal] = useState(2000);
@@ -27,7 +27,7 @@ export default function Profile() {
         setSavedRecipes(response.data.recipes);
       });
     }
-  }, [create, user, show]);
+  }, [create, user, show, profile.id, API]);
 
   const handleShow = () => setShow(true);
 
@@ -85,11 +85,11 @@ export default function Profile() {
             <CalorieTracker profile={profile} totCal={totCal} setTotCal={setTotCal} totFat={totFat} setTotFat={setTotFat} totCarb={totCarb} setTotCarb={setTotCarb} totProtein={totProtein} setTotProtein={setTotProtein} />
             <br></br>
             <Button className="mx-2" variant="warning" onClick={handleShow}>
-        Add To Tracker
-      </Button>
-      <Button className="mx-2" variant="danger" style={{background:"#f90f0d"}} onClick={handleReset}>Reset Tracker</Button>
+              Add To Tracker
+            </Button>
+            <Button className="mx-2" variant="danger" style={{ background: "#f90f0d" }} onClick={handleReset}>Reset Tracker</Button>
           </article>
-          <CalorieModal show={show} setShow={setShow} profile={profile}/>
+          <CalorieModal show={show} setShow={setShow} profile={profile} />
 
           <h2 style={{ color: "#FB8F00" }}>Tracked Nutrition</h2>
           <div>
@@ -101,10 +101,10 @@ export default function Profile() {
                 <Card.Img
                   variant="top"
                 />
-                <Card.Title className="mt-4" style={{color:"#f90f0d"}}><h3>{user.displayName}</h3></Card.Title>
+                <Card.Title className="mt-4" style={{ color: "#f90f0d" }}><h3>{user.displayName}</h3></Card.Title>
                 <Card.Body>
                   <Card.Text><h4>Calories: {profile.cal}kcal / {totCal}kcal
-                    </h4></Card.Text>
+                  </h4></Card.Text>
                   <Card.Text><h4>Fat: {profile.fat}g / {totFat}g</h4></Card.Text>
                   <Card.Text><h4>Carbs: {profile.carb}g / {totCarb}g</h4></Card.Text>
                   <Card.Text><h4>Protein: {profile.protein}g / {totProtein}g</h4></Card.Text>
@@ -120,7 +120,7 @@ export default function Profile() {
               className="d-flex align-items-center justify-content-center"
               style={{ gap: ".5rem" }}
             >
-              <Button variant="danger" style={{background:"#f90f0d"}} onClick={handleSignOut}>
+              <Button variant="danger" style={{ background: "#f90f0d" }} onClick={handleSignOut}>
                 Sign Out
               </Button>
             </div>

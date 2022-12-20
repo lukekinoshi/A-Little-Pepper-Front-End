@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Col, Row, Container, Card, Button} from "react-bootstrap";
+import { Col, Row, Container, Card, Button } from "react-bootstrap";
 import { UserAuth } from "../Context/AuthContext";
 import axios from "axios";
-import image1 from "../Assets/logo.png";
-
 
 const ACCESS_POINT = process.env.REACT_APP_ACCESS_POINT;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -24,13 +22,14 @@ export default function RecipeDetails() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=9ab6abef58ff4088ab12f31009f1a8a9`
-      ).then((res) => {
+      .get(`${ACCESS_POINT}/${id}/information?apiKey=${API_KEY}`)
+      .then((res) => {
         setRecipe(res.data);
       })
       .catch((error) => console.error(error));
+  }, [id]);
 
+  useEffect(() => {
     axios
       .get(`${ACCESS_POINT}/${id}/nutritionWidget.json?apiKey=${API_KEY}`)
       .then((res) => {
@@ -38,26 +37,30 @@ export default function RecipeDetails() {
         setCalorie(res.data.calories)
       })
       .catch((error) => console.error(error));
+  }, [id]);
 
+  useEffect(() => {
     axios
       .get(`${ACCESS_POINT}/${id}/ingredientWidget.json?apiKey=${API_KEY}`)
       .then((res) => setIngredients(res.data))
       .catch((error) => console.error(error));
+  }, [id]);
 
+  useEffect(() => {
     axios
       .get(`${ACCESS_POINT}/${id}/analyzedInstructions?apiKey=${API_KEY}`)
       .then((res) => {
-        setInstructions(res.data[0].steps);
+        setInstructions(res.data[0].steps)
       })
       .catch((error) => console.error(error));
+  }, [id]);
 
+  useEffect(() => {
     axios
       .get(`${ACCESS_POINT}/${id}/priceBreakdownWidget.json?apiKey=${API_KEY}`)
       .then((res) => setPrices(res.data.ingredients))
       .catch((error) => console.error(error));
-
   }, [id]);
-
 
   const handleBookmark = () => {
     if (profile.recipes.includes(id)) {
@@ -178,18 +181,18 @@ export default function RecipeDetails() {
             >
               <Card.Title>
                 <h3 style={{ color: "#FB8F00" }}>
-                Ingredients
-                  </h3></Card.Title>
-            {ingredient &&
-              ingredient.map((item) => {
-                return (
+                  Ingredients
+                </h3></Card.Title>
+              {ingredient &&
+                ingredient.map((item) => {
+                  return (
                     <Card.Text>
                       {item.amount.us.value} {item.amount.us.unit} of{" "}
                       {item.name}{" "}
                     </Card.Text>
-                );
-              })}
-              </Card>
+                  );
+                })}
+            </Card>
           </article>
         </Col>
         <Col>
@@ -199,37 +202,36 @@ export default function RecipeDetails() {
               style={{ alignItems: "center" }}
             >
               <Card.Title>
-          <h3 style={{ color: "#FB8F00" }}>Ingredients Price Breakdown</h3>
-          </Card.Title>
-            {price &&
-              price.map((item) => {
-                return (
+                <h3 style={{ color: "#FB8F00" }}>Ingredients Price Breakdown</h3>
+              </Card.Title>
+              {price &&
+                price.map((item) => {
+                  return (
                     <Card.Text>
                       {item.amount.us.value} {item.amount.us.unit} {item.name} : ${(Math.round(10 * item.price) / 1000).toFixed(2)}{" "}
                     </Card.Text>
-                );
-              })}
-            <h3 style={{color: "#FB8F00"}}>Total Cost: ${(Math.round(10 * priceSum) / 1000).toFixed(2)}</h3>
-              </Card>
+                  );
+                })}
+              <h3 style={{ color: "#FB8F00" }}>Total Cost: ${(Math.round(10 * priceSum) / 1000).toFixed(2)}</h3>
+            </Card>
           </article>
         </Col>
       </Row>
-  
       <article>
         <Card
           variant="light"
         > <Card.Title>
-          <h3 style={{ color: "#FB8F00" }}>Instructions</h3>
-        </Card.Title>
-        {instructions &&
-          instructions.map((instruction) => {
-            return (
+            <h3 style={{ color: "#FB8F00" }}>Instructions</h3>
+          </Card.Title>
+          {instructions &&
+            instructions.map((instruction) => {
+              return (
                 <Card.Text>
                   Step {instruction.number}: {instruction.step}
                 </Card.Text>
-            );
-          })}
-          </Card>
+              );
+            })}
+        </Card>
       </article>
     </Container>
 

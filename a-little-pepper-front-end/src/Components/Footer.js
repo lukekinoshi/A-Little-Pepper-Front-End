@@ -11,7 +11,7 @@ function Footer() {
         <Row className="d-flex align-items-center justify-content-around" xs={1} md={3} lg={3}>
           <Col className="d-flex align-items-center justify-content-beggining py-3">
             <Link to="/" style={{ color: "white", listStyle: "none" }}>
-              <img src={logo} width="80" height="80" />
+              <img src={logo} alt="logo" width="80" height="80" />
             </Link>
           </Col>
           <Col className="d-flex align-items-center justify-content-center">
@@ -21,10 +21,10 @@ function Footer() {
           </Col>
           <Col className="d-flex align-items-center justify-content-end">
             <Link className="me-3" style={{color:"black"}}>
-            <img src={twitter} width="40" height="40" />
+            <img src={twitter} alt="twitter logo" width="40" height="40" />
             </Link>
             <Link className="ms-3" style={{color:"black"}}>
-            <img src={instagram} width="40" height="40" />
+            <img src={instagram} alt="instagram logo" width="40" height="40" />
             </Link>
           </Col>
         </Row>

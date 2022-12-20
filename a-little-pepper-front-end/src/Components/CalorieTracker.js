@@ -13,7 +13,7 @@ export default function CalorieTracker({
   totProtein,
   setTotProtein,
 }) {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes] = useState([]);
   const [diet, setDiet] = useState("Average");
   const [dietInfo, setDietInfo] = useState(
     "This is the default diet that most individuals follow with a balanced ratio of carbohydrates, fats, and protein. This is typically used when a person does not have any specific goals in mind as this is a perfect diet to maintain weight. This assumes that the individual spends the reccomended 30 mminutes of daily activies"
@@ -31,6 +31,7 @@ export default function CalorieTracker({
   }, [diet, dietInfo]);
 
   const handleDiet = (e) => {
+    e.preventDefault();
     setDiet(e.target.value);
     console.log(diet);
     if (diet === "Average") {
