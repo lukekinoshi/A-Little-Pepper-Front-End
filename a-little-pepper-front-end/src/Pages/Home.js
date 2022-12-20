@@ -5,7 +5,6 @@ import axios from "axios";
 import About from "../Components/About";
 import padThai from "../Assets/pad-thai.png";
 
-
 import Recipe from "../Components/Recipe";
 
 const ACCESS_POINT = process.env.REACT_APP_ACCESS_POINT;
@@ -37,7 +36,7 @@ export default function Homepage() {
   return (
     <div className="my-5">
       <div>
-        <img src={padThai} width="30%" />
+        <img src={padThai} alt="pad thai" width="30%" />
         <h1 className="mt-4">Search for a recipe</h1>
         <Form onSubmit={handleSubmit}>
           <div className="row">
@@ -72,6 +71,7 @@ export default function Homepage() {
                       <img
                         style={{ marginLeft: "5px" }}
                         src={pepper}
+                        alt="pepper"
                         width="25"
                         height="25"
                       />

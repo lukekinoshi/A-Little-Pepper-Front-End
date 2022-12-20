@@ -11,7 +11,7 @@ export default function NavBar() {
       <Navbar expand="lg" bg="" variant="light" style={{ borderBottom: "1px solid #F8C771", background:"#fd976c"}}>
         <Container>
           <Nav.Link as={Link} to="/" style={{ color: "white" }}>
-            <img src={logo} width="100" height="100"  />
+            <img src={logo} alt="logo" width="100" height="100"  />
           </Nav.Link>
             <Nav className="ms-auto">
               {user ? (
