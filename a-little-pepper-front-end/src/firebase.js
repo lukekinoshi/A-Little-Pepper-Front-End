@@ -7,12 +7,13 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCMsjzvmGwa6f8LjKtAjtav6rpPDnYCFj0",
-  authDomain: "littlepepper-951c0.firebaseapp.com",
-  projectId: "littlepepper-951c0",
-  storageBucket: "littlepepper-951c0.appspot.com",
-  messagingSenderId: "701727530671",
-  appId: "1:701727530671:web:1c9f4763da89e1c33d7e5a"
+  apiKey: "AIzaSyCs16kD5f-BuK0ZuWFx8_tIxkmZCXxbD7E",
+  authDomain: "a-little-pepper.firebaseapp.com",
+  projectId: "a-little-pepper",
+  storageBucket: "a-little-pepper.appspot.com",
+  messagingSenderId: "698962632123",
+  appId: "1:698962632123:web:61722a6227fa7d3f4f389e",
+  measurementId: "G-R9KQN2F9KT"
 };
 
 // Initialize Firebase
